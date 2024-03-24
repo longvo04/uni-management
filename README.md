@@ -1,8 +1,31 @@
-# React + Vite
+# University Management Project
+## Assignment for _Advanced Programming Course_
+## Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Provide GUI for Admin, Lecturer and Student of the school
+- ...
+- ...
+- ...
+## Tech
 
-Currently, two official plugins are available:
+- [ReactJS] - HTML enhanced for web apps!
+- [Material UI] - great UI boilerplate for modern web apps
+- [node.js] - evented I/O for the backend
+- [Firebase] - ...
+- ...
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Installation
+
+Clone the project
+```sh
+git clone https://github.com/longvo04/uni-management.git
+```
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+yarn install
+yarn dev
+```
+
