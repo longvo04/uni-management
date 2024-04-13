@@ -44,9 +44,6 @@ function Auth() {
         <Button variant="contained" disabled>
           Quên mật khẩu
         </Button>
-        <Button variant="contained" href="#contained-buttons">
-          Đăng ký
-        </Button>
       </Stack>
     </Container>
   );
