@@ -5,30 +5,30 @@ import { useState } from 'react'
 import ThemeSelect from './components/ThemeSelect'
 import Auth from './pages/Auth'
 import Admin from './pages/Admin'
+import Student from './pages/Student'
 import { Container } from '@mui/material'
 
 function App() {
   const { currentRole } = useState('Student');
 
   return (
-    <>
-      <Container>
-        <BrowserRouter>
-          {currentRole == null &&
-          <Routes>
-            <Route path="/" element={<Navigate to="/admin/*" />} />
-            <Route path="/admin/*" element={<Admin />} />
-            <Route path="/auth" element={<Auth />} />
-          </Routes>}
+    <Container disableGutters sx={{ width: '100%', minWidth: '100%' }}>
+      <BrowserRouter>
+        {currentRole == null &&
+        <Routes>
+          <Route path="/" element={<Navigate to="/admin/*" />} />
+          <Route path="/admin/*" element={<Admin />} />
+          <Route path='/student/*' element={<Student />} />
+          <Route path="/auth" element={<Auth />} />
+        </Routes>}
 
-          {currentRole === "Admin" && <Admin />}
-          {currentRole === "Student" && <Student />}
-          {currentRole === "Teacher" && <Teacher />}
-        </BrowserRouter>
-        {/* <ThemeSelect />
-        <Auth /> */}
-      </Container>
-    </>
+        {currentRole === "Admin" && <Admin />}
+        {currentRole === "Student" && <Student />}
+        {currentRole === "Teacher" && <Teacher />}
+      </BrowserRouter>
+      {/* <ThemeSelect />
+      <Auth /> */}
+    </Container>
   )
 }
 
