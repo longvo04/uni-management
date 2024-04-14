@@ -1,0 +1,116 @@
+/*img size*/
+.icon-head{
+    width: 30px; 
+    height: 30px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+td {
+  padding: 10px !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+tr:last-child td {
+  border-bottom: none !important;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.search-container #searchInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.search-container #courseList {
+  list-style-type: none;
+  padding: 0;
+}
+.search-container #courseList li {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.search-container #courseList li:last-child {
+  border-bottom: none;
+}
+
+.margin-top {
+  margin-top: 60px;
+}
+.margin-bottom {
+  margin-bottom: 60px;
+}
+
+.body-fullcalendar {
+  text-align: center;
+  font-size: 14px;
+  font-family: "Helvetica Nueue", Arial, Verdana, sans-serif;
+  background-color: #DDDDDD;
+}
+#wrap {
+  width: 1100px;
+  margin: 0 auto;
+}
+#external-events {
+  float: left;
+  width: 150px;
+  padding: 0 10px;
+  text-align: left;
+}
+#external-events h4 {
+  font-size: 16px;
+  margin-top: 0;
+  padding-top: 1em;
+}
+.external-event {
+  margin: 10px 0;
+  padding: 2px 4px;
+  background: #3366CC;
+  color: #fff;
+  font-size: .85em;
+  cursor: pointer;
+}
+#external-events p {
+  margin: 1.5em 0;
+  font-size: 11px;
+  color: #666;
+}
+#external-events p input {
+  margin: 0;
+  vertical-align: middle;
+}
+#calendar {
+  margin: 0 auto;
+  width: 900px;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px #C3C3C3;
+}
+
+.table-clickable tbody tr {
+  cursor: pointer;
+}
+.table-clickable tbody tr:hover {
+  background-color: #f5f5f5;
+}
+.table-clickable tbody tr.active {
+  background-color: #007bff;
+  color: white;
+}
