@@ -4,7 +4,7 @@ import StudentHomePage from './HomePage';
 import StudentDashBoard from './DashBoard';
 import Courses from './Courses';
 import CourseRegister from './CourseRegister';
-import StudentFooter from '../../components/StudentFooter';
+import UserFooter from '../../components/UserFooter';
 
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const Student = () => {
           <Route path="/course-register" element={<CourseRegister />} />
         </Route>
       </Routes>
-      <StudentFooter />
+      <UserFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       {/* <!-- Custom --> */}
       <script src="assets/js/custom.js"></script>
