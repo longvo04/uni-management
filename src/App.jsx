@@ -6,6 +6,7 @@ import ThemeSelect from './components/ThemeSelect'
 import Auth from './pages/Auth'
 import Admin from './pages/Admin'
 import Student from './pages/Student'
+import Lecturer from './pages/Lecturer'
 import { Container } from '@mui/material'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Navigate to="/admin/*" />} />
           <Route path="/admin/*" element={<Admin />} />
           <Route path='/student/*' element={<Student />} />
+          <Route path='/lecturer/*' element={<Lecturer />} />
           <Route path="/auth" element={<Auth />} />
         </Routes>}
 
