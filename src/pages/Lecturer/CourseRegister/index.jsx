@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+import '../../../assets/css/style.css';
 
 const CourseRegister = () => {
   const [showTable1, setShowTable1] = useState(true);
@@ -188,7 +189,7 @@ const CourseRegister = () => {
           </div>
           <div className="row mt-3">
             <div className="col-md-12 text-center">
-              <button className="btn btn-primary" onClick={backToTable1}>Trang chính</button>
+              <button className="btn btn-primary buttonSpacing" onClick={backToTable1}>Trang chính</button>
               <button className="btn btn-primary" onClick={nextToTable3}>Đăng ký/Hiệu chỉnh</button>
             </div>
           </div>
@@ -232,7 +233,7 @@ const CourseRegister = () => {
           </div>
         </div>
       )}
-
+      <div class="margin-bottom"></div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </Box>

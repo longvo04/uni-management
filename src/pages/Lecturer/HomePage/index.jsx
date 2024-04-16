@@ -22,11 +22,7 @@ import img5 from '../../../assets/img/recent-work-05.jpg';
 import img6 from '../../../assets/img/recent-work-06.jpg';
 
 
-<<<<<<< HEAD
-const StudentHomePage = () => {
-=======
 const LecturerHomePage = () => {
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
   return (
     <div>
       <div className="banner-wrapper bg-light">
@@ -42,11 +38,7 @@ const LecturerHomePage = () => {
 
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
-<<<<<<< HEAD
-                    <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300">
-=======
                     <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                       Hướng dẫn sử dụng
                     </h1>
                     <p className="banner-body text-muted py-3 mx-0 px-0">
@@ -102,11 +94,7 @@ const LecturerHomePage = () => {
               <span className="visually-hidden">Next</span>
             </a>
           </div>
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
 
         </div>
       </div>
@@ -121,11 +109,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-<<<<<<< HEAD
                 <img className="recent-work-img card-img" src={img1} alt="Card image" />
-=======
-                <img className="recent-work-img card-img" src={img1} alt="Card image"/>
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Lịch ĐKMH HK233</h3>
@@ -137,11 +121,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-<<<<<<< HEAD
                 <img className="recent-work-img card-img" src={img2} alt="Card image" />
-=======
-                <img className="recent-work-img card-img" src={img2} alt="Card image"/>
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Đóng học phí HK232</h3>
@@ -153,11 +133,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-<<<<<<< HEAD
                 <img className="recent-work-img card-img" src={img3} alt="Card image" />
-=======
-                <img className="recent-work-img card-img" src={img3} alt="Card image"/>
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Thông báo gia hạn SHCD</h3>
@@ -169,11 +145,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-<<<<<<< HEAD
                 <img className="recent-work-img card-img" src={img4} alt="Card image" />
-=======
-                <img className="recent-work-img card-img" src={img4} alt="Card image"/>
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Các quy định học vụ thay đổi từ HK222</h3>
@@ -185,11 +157,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-<<<<<<< HEAD
                 <img className="recent-work-img card-img" src={img5} alt="Card image" />
-=======
-                <img className="recent-work-img card-img" src={img5} alt="Card image"/>
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Career Talk</h3>
@@ -201,11 +169,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-<<<<<<< HEAD
                 <img className="recent-work-img card-img" src={img6} alt="Card image" />
-=======
-                <img className="recent-work-img card-img" src={img6} alt="Card image"/>
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Thư khảo sát</h3>
@@ -222,8 +186,4 @@ const LecturerHomePage = () => {
   );
 }
 
-<<<<<<< HEAD
-export default StudentHomePage;
-=======
 export default LecturerHomePage;
->>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
