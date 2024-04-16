@@ -15,7 +15,11 @@ import '../../../assets/js/jquery.min.js';
 import '../../../assets/js/templatemo.js';
 import '../../../assets/js/templatemo.min.js';
 
+<<<<<<< HEAD
 const StudentDashBoard = () => {
+=======
+const LecturerDashBoard = () => {
+>>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
   return (
     <div id='wrap'>
       <div id='calendar'></div>
@@ -24,4 +28,8 @@ const StudentDashBoard = () => {
   );
 }
 
+<<<<<<< HEAD
 export default StudentDashBoard;
+=======
+export default LecturerDashBoard;
+>>>>>>> 1512ff00c21ae87c4140453323a359065d8e64b0
