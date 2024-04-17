@@ -94,7 +94,7 @@ const LecturerHomePage = () => {
               <span className="visually-hidden">Next</span>
             </a>
           </div>
-          
+
 
         </div>
       </div>
@@ -109,7 +109,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img1} alt="Card image"/>
+                <img className="recent-work-img card-img" src={img1} alt="Card image" />
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Lịch ĐKMH HK233</h3>
@@ -121,7 +121,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img2} alt="Card image"/>
+                <img className="recent-work-img card-img" src={img2} alt="Card image" />
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Đóng học phí HK232</h3>
@@ -133,7 +133,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img3} alt="Card image"/>
+                <img className="recent-work-img card-img" src={img3} alt="Card image" />
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Thông báo gia hạn SHCD</h3>
@@ -145,7 +145,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img4} alt="Card image"/>
+                <img className="recent-work-img card-img" src={img4} alt="Card image" />
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Các quy định học vụ thay đổi từ HK222</h3>
@@ -157,7 +157,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img5} alt="Card image"/>
+                <img className="recent-work-img card-img" src={img5} alt="Card image" />
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Career Talk</h3>
@@ -169,7 +169,7 @@ const LecturerHomePage = () => {
 
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img6} alt="Card image"/>
+                <img className="recent-work-img card-img" src={img6} alt="Card image" />
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Thư khảo sát</h3>

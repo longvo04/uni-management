@@ -31,7 +31,7 @@ const StudentBar = () => {
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/dashboard">Bảng điều khiển</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/course-register">Đăng ký nhận lớp</a>
+                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/course-register">Đăng ký lớp học</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/courses">Khóa học</a>

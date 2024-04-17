@@ -1,10 +1,11 @@
 import { Box } from '@mui/material';
 import LecturerBar from '../../components/LecturerBar';
-import LecturerHomepage from './HomePage';
-import LecturerDashboard from './DashBoard';
+import LecturerHomePage from './HomePage';
+import LecturerDashBoard from './DashBoard';
 import Courses from './Courses';
-import UserFooter from '../../components/UserFooter';
-
+import CourseRegister from './CourseRegister';
+import LecturerInfor from './LecturerInfor';
+import LecturerFooter from '../../components/LecturerFooter';
 import { Routes, Route, Navigate } from "react-router-dom";
 
 const Lecturer = () => {
@@ -13,12 +14,14 @@ const Lecturer = () => {
       <LecturerBar />
       <Routes>
         <Route path="/" >
-          <Route path="/home" element={<LecturerHomepage />} />
-          <Route path="/dashboard" element={<LecturerDashboard />} />
+          <Route path="/home" element={<LecturerHomePage />} />
+          <Route path="/dashboard" element={<LecturerDashBoard />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/course-register" element={<CourseRegister />} />
+          <Route path="/LecturerInfor" element={<LecturerInfor />} />
         </Route>
       </Routes>
-      <UserFooter />
+      <LecturerFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       {/* <!-- Custom --> */}
       <script src="assets/js/custom.js"></script>

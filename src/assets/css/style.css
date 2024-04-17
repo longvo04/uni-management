@@ -114,3 +114,7 @@ tr:last-child td {
   background-color: #007bff;
   color: white;
 }
+
+.buttonSpacing {
+  margin-right: 16px;
+}
