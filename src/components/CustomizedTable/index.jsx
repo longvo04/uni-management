@@ -73,7 +73,7 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n[0]);
+      const newSelected = visibleRows.map((n) => n[0]);
       setSelected(newSelected);
       return;
     }

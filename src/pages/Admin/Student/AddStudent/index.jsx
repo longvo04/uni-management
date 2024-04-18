@@ -8,6 +8,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { Padding } from '@mui/icons-material';
 
 const AddStudent = () => {
   const [name, setName] = useState('');
@@ -66,10 +67,9 @@ const AddStudent = () => {
       noValidate
       autoComplete="off"
     >
-      <h2>Nhập thông tin sinh viên</h2>
       <Box width={'100%'}>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
+          <Grid item xs={6}>
             <TextField
               fullWidth
               required
@@ -79,7 +79,7 @@ const AddStudent = () => {
               defaultValue=""
             />  
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={5}>
             <TextField
               fullWidth
               required
@@ -90,7 +90,7 @@ const AddStudent = () => {
             />  
           </Grid>
           
-          <Grid item xs={2}>
+          <Grid item xs={4}>
             <TextField
               fullWidth
               required
@@ -100,7 +100,7 @@ const AddStudent = () => {
               defaultValue=""
             />  
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={7}>
             <Box>
               <FormControl fullWidth>
                 <InputLabel id="major-label">Khoa</InputLabel>
@@ -119,14 +119,14 @@ const AddStudent = () => {
               </FormControl>
             </Box>
           </Grid>
-          <Grid item xs={3}> 
+          <Grid item xs={4}> 
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DatePicker']}>
+              <DemoContainer sx={{ padding: 0 }} components={['DatePicker']}>
                 <DatePicker format="DD-MM-YYYY" id = 'dob' label="Ngày sinh" onChange={handleChangeDob}/>
               </DemoContainer>
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={4}> 
+          <Grid item xs={7}> 
             <TextField
               fullWidth
               required
@@ -138,7 +138,7 @@ const AddStudent = () => {
           </Grid>
         </Grid>
       </Box>
-      <Button onClick={handleSubmit} variant="contained">Thêm sinh viên</Button>
+      <Button sx={{position: 'relative', float: 'right', margin: '20px 56px 0 0'}} onClick={handleSubmit} variant="contained">Thêm sinh viên</Button>
     </Box>
   );
 }

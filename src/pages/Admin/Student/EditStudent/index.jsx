@@ -162,6 +162,9 @@ const EditStudent = ({ data }) => {
       </Box>
       <Button sx={{marginTop: 2, position: 'relative', left: 500}} variant="contained" onClick={handleSubmit}>Lưu</Button>
       <Divider sx={{ margin: 2 }}/>
+      <Box>
+        
+      </Box>
     </div>
   )
 }

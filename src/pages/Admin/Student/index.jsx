@@ -5,6 +5,7 @@ import AddStudent from './AddStudent';
 import EditStudent from './EditStudent';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
+import { Add } from '@mui/icons-material';
 
 function createData(id, name, mssv, group, major, dob, gender, address, email, password) {
   return [
@@ -88,7 +89,7 @@ const Student = () => {
   console.log(renderCols)
   return (
     <Box sx={{ marginTop: 3 }}>
-      <Button variant="contained" href="student/add">Thêm sinh viên</Button>
+      <Modal ModalContent={AddStudent} modalTitle={'Nhập thông tin sinh viên'} buttonDescription={'Thêm sinh viên'} ></Modal>
       <CustomizedTable ModalContent={EditStudent} headCells={headCells} rows={rows} renderCols={renderCols} modalTitle={'Sửa thông tin sinh viên'}/>
     </Box>
   );
