@@ -14,20 +14,31 @@ import Button from '@mui/material/Button';
 
 
 
+//id, name, lecturerId, major, dob, gender, address, degree, email, password
 const EditLecturer = ({ data }) => {
   console.log(data)
 
-  const [gender, setGender] = React.useState('Nam');
   const [fullName, setFullName] = React.useState(data[1]);
-  const [studentId, setStudentId] = React.useState(data[2]);
-  const [group, setGroup] = React.useState(data[3]);
-  const [major, setMajor] = React.useState('Khoa học và kỹ thuật máy tính');
-  const [dob, setDob] = React.useState(data[5]);
-  console.log(dob)
+  const [lecturerId, setLecturerId] = React.useState(data[2]);
+  const [major, setMajor] = React.useState(data[3]);
+  const [dob, setDob] = React.useState(data[4]);
+  const [gender, setGender] = React.useState(data[5]);
+  const [address, setAddress] = React.useState(data[6]);
+  const [degree, setDegree] = React.useState(data[7]);
+  const [email, setEmail] = React.useState(data[8]);
+  const [password, setPassword] = React.useState(data[9]);
 
-  const handleChangeGroup = (event) => {
-    setGroup(event.target.value);
+  const handleChangeFullName = (event) => {
+    setFullName(event.target.value);
   }
+  
+  const handleChangeLecturerId = (event) => {
+    setLecturerId(event.target.value);
+  }
+
+  const handleChangeMajor = (event) => {
+    setMajor(event.target.value);
+  };
 
   const handleChangeDob = (date) => {
     const day = `${date.$D}`
@@ -38,29 +49,40 @@ const EditLecturer = ({ data }) => {
     console.log(dob)
   }
 
-  const handleChangeStudentId = (event) => {
-    setStudentId(event.target.value);
-  }
-
-  const handleChangeFullName = (event) => {
-    setFullName(event.target.value);
-  }
-
-  const handleChangeMajor = (event) => {
-    setMajor(event.target.value);
-  };
-
   const handleChangeGender = (event) => {
     setGender(event.target.value);
   }
 
+  const handleChangeAddress = (event) => {
+    setAddress(event.target.value);
+  }
+
+  const handleChangeDegree = (event) => {
+    setDegree(event.target.value);
+  }
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  }
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  }
+
+//id, name, lecturerId, major, dob, gender, address, degree, email, password
+
   const handleSubmit = () => {
     const student = {
-      fullName: fullName,
-      studentId: studentId,
-      dob: dob,
-      group: group,
-      major
+      id: data[0],
+      fullName,
+      lecturerId,
+      major,
+      dob,
+      gender,
+      address,
+      degree,
+      email,
+      password
     }
     // Handle submit
     console.log(student)
@@ -80,8 +102,7 @@ const EditLecturer = ({ data }) => {
         }}
         noValidate
         autoComplete="off"
-      >
-        
+      > 
         <TextField
           required
           id="name"
@@ -91,19 +112,12 @@ const EditLecturer = ({ data }) => {
         />
         <TextField
           required
-          id="mssv"
-          label="MSSV"
-          value={studentId}
-          onChange={handleChangeStudentId}
+          id="lecturerId"
+          label="Mã giảng viên"
+          value={lecturerId}
+          onChange={handleChangeLecturerId}
         />
-        <TextField
-          required
-          id="group"
-          label="Lớp"
-          value={group}
-          onChange={handleChangeGroup}
-        />
-        <Box sx={{ minWidth: 230, maxWidth: 230, marginTop: 1}}>
+        <Box sx={{ minWidth: 200, maxWidth: 230, marginTop: 1}}>
           <FormControl fullWidth>
             <InputLabel id="major-label">Khoa</InputLabel>
             <Select
@@ -124,13 +138,13 @@ const EditLecturer = ({ data }) => {
             <DatePicker defaultValue={dayjs(dob)} format="DD-MM-YYYY" id = 'dob' label="Ngày sinh" onChange={handleChangeDob}/>
           </DemoContainer>
         </LocalizationProvider>
-        <Box sx={{ minWidth: 230, maxWidth: 230, marginTop: 2}}>
+        <Box sx={{ minWidth: 230, maxWidth: 230}}>
           <FormControl fullWidth>
-            <InputLabel id="gender-label">Khoa</InputLabel>
+            <InputLabel id="gender-label">Giới tính</InputLabel>
             <Select
               labelId="gender-label"
               id="gender-select"
-              value={gender}
+              value={gender || ''}
               label="Gender"
               onChange={handleChangeGender}
             >
@@ -140,6 +154,34 @@ const EditLecturer = ({ data }) => {
             </Select>
           </FormControl>
         </Box>
+        <TextField
+          required
+          id="address"
+          label="Địa chỉ"
+          value={address}
+          onChange={handleChangeAddress}
+        />
+        <TextField
+          required
+          id="degree"
+          label="Bằng cấp"
+          value={degree || ''}
+          onChange={handleChangeDegree}
+        />
+        <TextField
+          required
+          id="email"
+          label="Email"
+          value={email || ''}
+          onChange={handleChangeEmail}
+        />
+        <TextField
+          required
+          id="password"
+          label="Mật khẩu"
+          value={password || ''}
+          onChange={handleChangePassword}
+        />
       </Box>
       <Button sx={{marginTop: 2, position: 'relative', left: 500}} variant="contained" onClick={handleSubmit}>Lưu</Button>
     </div>

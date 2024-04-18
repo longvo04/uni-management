@@ -62,6 +62,7 @@ const EditStudent = ({ data }) => {
 
   const handleSubmit = () => {
     const student = {
+      id: data[0],
       fullName,
       studentId,
       group,

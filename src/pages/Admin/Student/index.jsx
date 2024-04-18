@@ -83,7 +83,7 @@ const rows = [
   createData('1234', 'Lê Minh Quân', '2211922', 'MT22KH08', 'Khoa học và kỹ thuật máy tính', '2004-04-13', 'Nam', 'TP Hồ Chí Minh', 'sdf@gmail.com','123456'),
 ];
 
-const renderCols = headCells.length+1
+const renderCols = headCells.length
 
 const Student = () => {
   console.log(renderCols)
