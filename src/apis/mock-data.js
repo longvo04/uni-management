@@ -1,0 +1,306 @@
+const classData = {
+  LTNC: [
+    { name: "LTNC 2023", size: "40", lecturer: "Nguyễn Văn A" },
+    { name: "LTNC 2024", size: "48", lecturer: "Nguyễn Văn A" },
+  ],
+};
+
+const studentData = {
+  "LTNC 2023": [
+    {
+      name: "Nguyễn Văn Aa",
+      mssv: "2200001",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+    {
+      name: "Nguyễn Văn Ab",
+      mssv: "2200002",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+    {
+      name: "Nguyễn Văn Ac",
+      mssv: "2200003",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+    {
+      name: "Nguyễn Văn Ad",
+      mssv: "2200004",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+  ],
+  "LTNC 2024": [
+    {
+      name: "Nguyễn Văn Ba",
+      mssv: "2200005",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+    {
+      name: "Nguyễn Văn Bc",
+      mssv: "2200006",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+    {
+      name: "Nguyễn Văn Bc",
+      mssv: "2200007",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+    {
+      name: "Nguyễn Văn Bd",
+      mssv: "2200008",
+      quiz: 0,
+      bonus: 0,
+      homework: 0,
+      midTerm: 0,
+      finalTerm: 0,
+    },
+  ],
+};
+
+const calculateFinalGrade = (student) => {
+  const quizGrade = student.quiz * 0.05;
+  const bonusGrade = student.bonus * 0.05;
+  const homeworkGrade = student.homework * 0.2;
+  const midTermGrade = student.midTerm * 0.3;
+  const finalTermGrade = student.finalTerm * 0.4;
+
+  return (
+    quizGrade +
+    bonusGrade +
+    homeworkGrade +
+    midTermGrade +
+    finalTermGrade
+  ).toFixed(2);
+};
+
+export const mockData = {
+  classes: [
+    {
+      nameLecturer: "Nguyễn Văn A",
+      id: "GT1 - 2023",
+      students: [
+        {
+          mssv: "2200001",
+          name: "Nguyễn Văn Aa",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200002",
+          name: "Nguyễn Văn Ab",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200003",
+          name: "Nguyễn Văn Ac",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200004",
+          name: "Nguyễn Văn Ad",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+      ],
+    },
+    {
+      nameLecturer: "Nguyễn Văn A",
+      id: "GT1 - 2024",
+      students: [
+        {
+          mssv: "2200005",
+          name: "Nguyễn Văn Ba",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200006",
+          name: "Nguyễn Văn Bb",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200007",
+          name: "Nguyễn Văn Bc",
+          classId: "GT1 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200008",
+          name: "Nguyễn Văn Bd",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+      ],
+    },
+    {
+      nameLecturer: "Nguyễn Văn A",
+      id: "GT2 - 2023",
+      students: [
+        {
+          mssv: "2200009",
+          name: "Nguyễn Văn Ca",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200010",
+          name: "Nguyễn Văn Cb",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200011",
+          name: "Nguyễn Văn Cc",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200012",
+          name: "Nguyễn Văn Cd",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+      ],
+    },
+    {
+      nameLecturer: "Nguyễn Văn A",
+      id: "GT2 - 2024",
+      students: [
+        {
+          mssv: "2200013",
+          name: "Nguyễn Văn Da",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200014",
+          name: "Nguyễn Văn Db",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200015",
+          name: "Nguyễn Văn Dc",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+        {
+          mssv: "2200016",
+          name: "Nguyễn Văn Dd",
+          classId: "GT2 - 2023",
+          quiz: 0,
+          bonus: 0,
+          homework: 0,
+          midTerm: 0,
+          finalTerm: 0,
+          finalGrade: 0,
+        },
+      ],
+    },
+  ],
+};

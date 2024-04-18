@@ -1,55 +1,94 @@
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import Badge from '@mui/material/Badge';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import React from 'react';
+
 import logo from '../../assets/img/logo.jpg';
 
+const buttonStyle = {
+  color: 'white',
+};
+
 const LecturerBar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => setAnchorEl(event.currentTarget)
+  const handleClose = () => setAnchorEl(null)
+
   return (
-    <nav id="main_nav" className="navbar navbar-expand-lg navbar-light bg-white shadow">
-      <div className="container d-flex justify-content-between align-items-center">
-        <a className="navbar-brand h1" href="/student">
+    <Box sx={{
+      width: '100%',
+      height: '60px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: 4,
+      paddingX: 8,
+      overflowX: 'auto',
+      bgcolor: '#399be2',
+      color: 'white',
+    }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <img src={logo} className="icon-head" />
-          <span className="text-dark h4">DEF</span> <span className="text-primary h4">Uni</span>
-        </a>
-        <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
-          id="navbar-toggler-success">
-          <div className="flex-fill mx-xl-5 mb-2">
-            <ul className="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
-              <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/lecturer/home">Trang chủ</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/lecturer/dashboard">Bảng điều khiển</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/lecturer/course-register">Đăng ký nhận lớp</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/lecturer/courses">Khóa học</a>
-              </li>
-            </ul>
-          </div>
-          <div className="navbar align-self-center d-flex">
-            <a className="nav-link" href="#"><NotificationsNoneIcon className='text-primary' /></a>
-          </div>
-          <div className="dropdown">
-            <a className="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <AccountCircleIcon className='text-primary' />
-            </a>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a className="dropdown-item" href="/lecturer/infor">Thông tin cá nhân</a></li>
-              <li><a className="dropdown-item" href="#">Cài đặt</a></li>
-              <li><a className="dropdown-item" href="#">Đăng xuất</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+          <a>DEF</a><a>Uni</a>
+        </Box>
+
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+          <Button href="/lecturer/home" style={buttonStyle}>Trang chủ</Button>
+          <Button href="/lecturer/dashboard" style={buttonStyle}>Bảng điều khiển</Button>
+          <Button href="/lecturer/course-register" style={buttonStyle}>Đăng ký nhận lớp</Button>
+          <Button href="/lecturer/courses" style={buttonStyle}>Khóa học</Button>
+        </Box>
+
+      </Box>
+
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Badge color="warning" variant="dot" sx={{ cursor: 'pointer' }}>
+          <NotificationsNoneIcon />
+        </Badge>
+        <Box>
+          <Button
+            style={buttonStyle}
+            id="basic-button-workspaces"
+            aria-controls={open ? 'basic-menu-workspaces' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+            endIcon={<ExpandMoreIcon />}
+          >
+            <AccountCircleIcon />
+          </Button>
+          <Menu
+            id="basic-menu-workspaces"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button-workspaces'
+            }}
+          >
+            <MenuItem>
+              <a className="dropdown-item" href="/lecturer/infor" >Thông tin cá nhân</a>
+            </MenuItem>
+            <Divider />
+            <MenuItem>
+              <a className="dropdown-item" href="" >Cài đặt</a>
+            </MenuItem>
+            <MenuItem>
+              <a className="dropdown-item" href="" >Đăng xuất</a>
+            </MenuItem>
+          </Menu>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

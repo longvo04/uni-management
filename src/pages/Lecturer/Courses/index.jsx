@@ -3,52 +3,35 @@ import Box from '@mui/material/Box';
 import '../../../assets/css/style.css';
 
 const Courses = () => {
-  const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
-  const [searchTermCourse, setSearchTermCourse] = useState('');
+  const [selectedStudent, setSelectedStudent] = useState(null);
   const [searchTermClass, setSearchTermClass] = useState('');
   const [searchTermStudent, setSearchTermStudent] = useState('');
 
   const classData = {
-    'GT1': [
-      { name: 'GT1 2023', size: '40', lecturer: 'Nguyễn Văn A' },
-      { name: 'GT1 2024', size: '48', lecturer: 'Nguyễn Văn B' },
-    ],
-    'GT2': [
-      { name: 'GT2 2023', size: '42', lecturer: 'Nguyễn Văn C' },
-      { name: 'GT2 2024', size: '50', lecturer: 'Nguyễn Văn D' },
-    ],
-    'VL1': [
-      { name: 'VL1 2023', size: '38', lecturer: 'Nguyễn Văn A' },
-      { name: 'VL1 2024', size: '45', lecturer: 'Nguyễn Văn A' },
-    ],
-    'HDC': [
-      { name: 'HDC 2023', size: '35', lecturer: 'Nguyễn Văn A' },
-      { name: 'HDC 2024', size: '42', lecturer: 'Nguyễn Văn A' },
-    ],
     'LTNC': [
-      { name: 'LTNC 2023', size: '30', lecturer: 'Nguyễn Văn A' },
-      { name: 'LTNC 2024', size: '36', lecturer: 'Nguyễn Văn A' },
+      { name: 'LTNC 2023', size: '40', lecturer: 'Nguyễn Văn A' },
+      { name: 'LTNC 2024', size: '48', lecturer: 'Nguyễn Văn A' },
     ],
   };
 
   const studentData = {
-    'GT1 2023': [
-      { name: 'Nguyễn Văn a', mssv: '2200000', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
-      { name: 'Nguyễn Văn b', mssv: '2200001', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
-      { name: 'Nguyễn Văn c', mssv: '2200002', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
-      { name: 'Nguyễn Văn d', mssv: '2200003', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+    'LTNC 2023': [
+      { name: 'Nguyễn Văn Aa', mssv: '2200001', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+      { name: 'Nguyễn Văn Ab', mssv: '2200002', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+      { name: 'Nguyễn Văn Ac', mssv: '2200003', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+      { name: 'Nguyễn Văn Ad', mssv: '2200004', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
     ],
-    'GT1 2024': [
-      { name: 'Nguyễn Văn e', mssv: '2200004', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
-      { name: 'Nguyễn Văn f', mssv: '2200005', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
-      { name: 'Nguyễn Văn g', mssv: '2200006', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+    'LTNC 2024': [
+      { name: 'Nguyễn Văn Ba', mssv: '2200005', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+      { name: 'Nguyễn Văn Bc', mssv: '2200006', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+      { name: 'Nguyễn Văn Bc', mssv: '2200007', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
+      { name: 'Nguyễn Văn Bd', mssv: '2200008', quiz: 0, bonus: 0, homework: 0, midTerm: 0, finalTerm: 0 },
     ],
-    // ... Add more classes here
   };
 
-  const filterClassData = (className, searchTerm) => {
-    return classData[className].filter(detail => detail.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filterClassData = (lecturerName, searchTerm) => {
+    return classData[lecturerName].filter(detail => detail.name.toLowerCase().includes(searchTerm.toLowerCase()));
   };
 
   const filterStudentData = (className, searchTerm) => {
@@ -65,84 +48,61 @@ const Courses = () => {
     const midTermGrade = student.midTerm * 0.3;
     const finalTermGrade = student.finalTerm * 0.4;
 
-    return (quizGrade + bonusGrade + homeworkGrade + midTermGrade + finalTermGrade).toFixed(2);
-  };
-
-  const displayClassDetails = (className) => {
-    setSelectedCourse(className);
+    return (quizGrade + bonusGrade + homeworkGrade + midTermGrade + finalTermGrade).toFixed(1);
   };
 
   const displayStudentDetails = (classDetail) => {
     setSelectedClass(classDetail);
   };
 
-  const handleBackToCourses = () => {
-    setSelectedCourse(null);
-    setSearchTermCourse('');
-    setSearchTermClass('');
-    setSelectedClass(null);
-    setSearchTermStudent('');
+  const displayStudentGrades = (student) => {
+    setSelectedStudent(student);
   };
 
   const handleBackToClass = () => {
     setSelectedClass(null);
+    setSelectedStudent(null);
+    setSearchTermClass('');
+  };
+
+  const handleBackToStudent = () => {
+    setSelectedStudent(null);
     setSearchTermStudent('');
   };
 
   return (
     <Box>
-      <div className="margin-top"></div>
-
       <main className="container-lg py-5">
-        {/* Search Course */}
-        {selectedCourse === null && (
-          <Box className="search-container">
-            <input
-              type="text"
-              placeholder="Tìm kiếm khóa học..."
-              className="form-control"
-              value={searchTermCourse}
-              onChange={(e) => setSearchTermCourse(e.target.value)}
-            />
-            <ul>
-              {Object.keys(classData).filter(course => course.toLowerCase().includes(searchTermCourse.toLowerCase())).map((course) => (
-                <li key={course} onClick={() => displayClassDetails(course)}>
-                  {course}
-                </li>
-              ))}
-            </ul>
-          </Box>
-        )}
-
         {/* Display Class Details */}
-        {selectedCourse !== null && selectedClass === null && (
+        {selectedClass === null && (
           <Box className="search-container">
             <input
+              id="searchInput"
               type="text"
               placeholder="Tìm kiếm lớp học..."
               className="form-control"
               value={searchTermClass}
               onChange={(e) => setSearchTermClass(e.target.value)}
             />
-            <h4>Khóa học: {selectedCourse}</h4>
-            <ul>
-              {filterClassData(selectedCourse, searchTermClass).map((detail) => (
+            <h4>Giảng viên: {classData['LTNC'][0].lecturer}</h4>
+            <ul id="courseList">
+              {filterClassData('LTNC', searchTermClass).map((detail) => (
                 <li
                   key={detail.name}
                   onClick={() => displayStudentDetails(detail.name)}
                 >
-                  {`${detail.name} - Sĩ số: ${detail.size} - Giảng viên: ${detail.lecturer}`}
+                  {`${detail.name} - Sĩ số: ${detail.size}`}
                 </li>
               ))}
             </ul>
-            <button className="btn btn-primary" onClick={handleBackToCourses}>Trở về</button>
           </Box>
         )}
 
         {/* Display Student Details */}
-        {selectedClass !== null && (
+        {selectedClass !== null && selectedStudent === null && (
           <Box className="search-container">
             <input
+              id="searchInput"
               type="text"
               placeholder="Tìm kiếm sinh viên..."
               className="form-control"
@@ -150,19 +110,112 @@ const Courses = () => {
               onChange={(e) => setSearchTermStudent(e.target.value)}
             />
             <h4>Danh sách học sinh - {selectedClass}</h4>
-            <ul>
+            <ul id="courseList">
               {filterStudentData(selectedClass, searchTermStudent).map((student) => (
-                <li key={student.mssv}>
-                  {`${student.name}, ${student.mssv}, Điểm tổng kết: ${calculateFinalGrade(student)}`}
+                <li key={student.mssv} onClick={() => displayStudentGrades(student)}>
+                  {`${student.name}, ${student.mssv}`}
                 </li>
               ))}
             </ul>
             <button className="btn btn-primary" onClick={handleBackToClass}>Trở về</button>
           </Box>
         )}
-      </main>
 
-      <div className="margin-bottom"></div>
+        {/* Display Student Grades */}
+        {selectedStudent !== null && (
+          <Box className="search-container">
+            <h4>Điểm của {selectedStudent.name}</h4>
+            <ul id="courseList">
+              <li>
+                {`Điểm kiểm tra: ${selectedStudent.quiz}; thay đổi thành: `}
+                <input
+                  type="number"
+                  value={selectedStudent.quiz}
+                  min="0"
+                  max="10"
+                  style={{ marginLeft: '10px', width: '50px' }}
+                  onChange={(e) => {
+                    if (e.target.value >= 0 && e.target.value <= 10) {
+                      selectedStudent.quiz = e.target.value;
+                      setSelectedStudent({ ...selectedStudent });
+                    }
+                  }}
+                />
+              </li>
+              <li>
+                {`Điểm bonus: ${selectedStudent.bonus}; thay đổi thành: `}
+                <input
+                  type="number"
+                  value={selectedStudent.bonus}
+                  min="0"
+                  max="10"
+                  style={{ marginLeft: '10px', width: '50px' }}
+                  onChange={(e) => {
+                    if (e.target.value >= 0 && e.target.value <= 10) {
+                      selectedStudent.bonus = e.target.value;
+                      setSelectedStudent({ ...selectedStudent });
+                    }
+                  }}
+                />
+              </li>
+              <li>
+                {`Điểm bài tập: ${selectedStudent.homework}; thay đổi thành: `}
+                <input
+                  type="number"
+                  value={selectedStudent.homework}
+                  min="0"
+                  max="10"
+                  style={{ marginLeft: '10px', width: '50px' }}
+                  onChange={(e) => {
+                    if (e.target.value >= 0 && e.target.value <= 10) {
+                      selectedStudent.homework = e.target.value;
+                      setSelectedStudent({ ...selectedStudent });
+                    }
+                  }}
+                />
+              </li>
+              <li>
+                {`Điểm giữa kỳ: ${selectedStudent.midTerm}; thay đổi thành: `}
+                <input
+                  type="number"
+                  value={selectedStudent.midTerm}
+                  min="0"
+                  max="10"
+                  style={{ marginLeft: '10px', width: '50px' }}
+                  onChange={(e) => {
+                    if (e.target.value >= 0 && e.target.value <= 10) {
+                      selectedStudent.midTerm = e.target.value;
+                      setSelectedStudent({ ...selectedStudent });
+                    }
+                  }}
+                />
+              </li>
+              <li>
+                {`Điểm cuối kỳ: ${selectedStudent.finalTerm}; thay đổi thành: `}
+                <input
+                  type="number"
+                  value={selectedStudent.finalTerm}
+                  min="0"
+                  max="10"
+                  style={{ marginLeft: '10px', width: '50px' }}
+                  onChange={(e) => {
+                    if (e.target.value >= 0 && e.target.value <= 10) {
+                      selectedStudent.finalTerm = e.target.value;
+                      setSelectedStudent({ ...selectedStudent });
+                    }
+                  }}
+                />
+              </li>
+              <li>
+                <Box>
+                  {`Điểm tổng kết: ${calculateFinalGrade(selectedStudent)}`}
+                </Box>
+              </li>
+            </ul>
+            <button className="btn btn-primary" onClick={handleBackToStudent}>Trở về</button>
+          </Box>
+        )}
+      </main>
     </Box>
   );
 };
