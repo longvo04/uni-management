@@ -71,6 +71,8 @@ const rows = [
   createData(16, 'Lê Minh Quân', '2211922', 'MT22KH08', 'KH&KTMT', '2004-04-13'),
 ];
 
+const renderCols = headCells.length
+
 const Student = () => {
   
   return (

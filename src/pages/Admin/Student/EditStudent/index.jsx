@@ -56,11 +56,14 @@ const EditStudent = ({ data }) => {
 
   const handleSubmit = () => {
     const student = {
-      fullName: fullName,
-      studentId: studentId,
-      dob: dob,
-      group: group,
-      major
+      id: data[0],
+      fullName,
+      studentId,
+      group,
+      major,
+      dob,
+      gender,
+      address
     }
     // Handle submit
     console.log(student)
