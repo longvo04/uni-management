@@ -8,7 +8,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { alpha } from '@mui/material/styles';
 
 function EnhancedTableToolbar(props) {
-  const { numSelected, handleDelete } = props;
+  const { numSelected } = props;
 
   return (
     <Toolbar
@@ -43,7 +43,7 @@ function EnhancedTableToolbar(props) {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton onClick={handleDelete}>
+          <IconButton>
             <DeleteIcon />
           </IconButton>
         </Tooltip>

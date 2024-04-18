@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import LecturerBar from '../../components/LecturerBar';
 import LecturerHomePage from './HomePage';
 import LecturerDashBoard from './DashBoard';
@@ -12,19 +12,15 @@ const Lecturer = () => {
   return (
     <Box>
       <LecturerBar />
-
-      <Box sx={{ width: '100%', minHeight: '400px' }}>
-        <Routes>
-          <Route path="/" >
-            <Route path="/home" element={<LecturerHomePage />} />
-            <Route path="/dashboard" element={<LecturerDashBoard />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/course-register" element={<CourseRegister />} />
-            <Route path="/LecturerInfor" element={<LecturerInfor />} />
-          </Route>
-        </Routes>
-      </Box>
-
+      <Routes>
+        <Route path="/" >
+          <Route path="/home" element={<LecturerHomePage />} />
+          <Route path="/dashboard" element={<LecturerDashBoard />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/course-register" element={<CourseRegister />} />
+          <Route path="/LecturerInfor" element={<LecturerInfor />} />
+        </Route>
+      </Routes>
       <LecturerFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       {/* <!-- Custom --> */}

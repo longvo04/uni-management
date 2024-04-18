@@ -11,20 +11,18 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-import { Divider } from '@mui/material';
 
 
 
 const EditStudent = ({ data }) => {
   console.log(data)
 
+  const [gender, setGender] = React.useState('Nam');
   const [fullName, setFullName] = React.useState(data[1]);
   const [studentId, setStudentId] = React.useState(data[2]);
   const [group, setGroup] = React.useState(data[3]);
-  const [major, setMajor] = React.useState(data[4]);
+  const [major, setMajor] = React.useState('Khoa học và kỹ thuật máy tính');
   const [dob, setDob] = React.useState(data[5]);
-  const [gender, setGender] = React.useState(data[6]);
-  const [address, setAddress] = React.useState(data[7]);
   console.log(dob)
 
   const handleChangeGroup = (event) => {
@@ -54,10 +52,6 @@ const EditStudent = ({ data }) => {
 
   const handleChangeGender = (event) => {
     setGender(event.target.value);
-  }
-
-  const handleChangeAddress = (event) => {
-    setAddress(event.target.value);
   }
 
   const handleSubmit = () => {
@@ -135,7 +129,7 @@ const EditStudent = ({ data }) => {
         </LocalizationProvider>
         <Box sx={{ minWidth: 230, maxWidth: 230, marginTop: 2}}>
           <FormControl fullWidth>
-            <InputLabel id="gender-label">Giới tính</InputLabel>
+            <InputLabel id="gender-label">Khoa</InputLabel>
             <Select
               labelId="gender-label"
               id="gender-select"
@@ -149,23 +143,8 @@ const EditStudent = ({ data }) => {
             </Select>
           </FormControl>
         </Box>
-        <TextField
-          sx={{
-            width: '70%',
-            minWidth: '70%!important',
-          }}
-          required
-          id="address"
-          label="Địa chỉ"
-          value={address}
-          onChange={handleChangeAddress}
-        />
       </Box>
       <Button sx={{marginTop: 2, position: 'relative', left: 500}} variant="contained" onClick={handleSubmit}>Lưu</Button>
-      <Divider sx={{ margin: 2 }}/>
-      <Box>
-        
-      </Box>
     </div>
   )
 }
