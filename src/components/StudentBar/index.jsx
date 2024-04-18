@@ -5,7 +5,9 @@ import '../../assets/css/custom.css';
 import '../../assets/css/templatemo.css';
 import '../../assets/css/style.css';
 import logo from '../../assets/img/logo.jpg';
-
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Divider from '@mui/material/Divider';
 
 const StudentBar = () => {
   return (
@@ -39,16 +41,16 @@ const StudentBar = () => {
             </ul>
           </div>
           <div className="navbar align-self-center d-flex">
-            <a className="nav-link" href="#"><i className='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+            <NotificationsNoneIcon />
           </div>
           <div className="dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <i className='bx bx-user-circle bx-sm text-primary'></i>
+              <AccountCircleIcon />
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a className="dropdown-item" href="infor.html">Thông tin cá nhân</a></li>
-              <li><a className="dropdown-item" href="upfile.html">Tài liệu cá nhân</a></li>
+              <li><a className="dropdown-item" href="/student/infor">Thông tin cá nhân</a></li>
+              <Divider />
               <li><a className="dropdown-item" href="#">Cài đặt</a></li>
               <li><a className="dropdown-item" href="#">Đăng xuất</a></li>
             </ul>

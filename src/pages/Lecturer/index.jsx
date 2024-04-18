@@ -20,7 +20,7 @@ const Lecturer = () => {
             <Route path="/dashboard" element={<LecturerDashBoard />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/course-register" element={<CourseRegister />} />
-            <Route path="/LecturerInfor" element={<LecturerInfor />} />
+            <Route path="/infor" element={<LecturerInfor />} />
           </Route>
         </Routes>
       </Box>
