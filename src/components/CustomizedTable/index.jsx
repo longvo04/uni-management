@@ -19,19 +19,6 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 700,
-  maxHeight: 900,
-  overflowY: 'scroll',
-  '&::-webkit-scrollbar': {
-    width: '0.4em'
-  },
-  '&::-webkit-scrollbar-track': {
-    boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
-  },
-  '&::-webkit-scrollbar-thumb': {
-    backgroundColor: 'rgba(0,0,0,.1)',
-    outline: '1px solid slategrey'
-  },
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -51,7 +38,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent }) => {
+const CustomizedTable = ({ headCells, rows, modalTitle, ModalContent }) => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState(headCells[0].id || 'name');
   const [selected, setSelected] = React.useState([]);
@@ -73,17 +60,17 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = visibleRows.map((n) => n[0]);
+      const newSelected = rows.map((n) => n[0]);
       setSelected(newSelected);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, id, index) => {
+  const handleClick = (event, id) => {
     // POP up modal for edit
     if (event.target.type !== 'checkbox') {
-      setData(visibleRows[index])
+      setData(rows[id-1])
       setOpenModal(true);
       return
     }
@@ -104,10 +91,6 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
     }
     setSelected(newSelected);
   };
-
-  const handleDelete = () => {
-    console.log(selected)
-  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -157,7 +140,7 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
         </Fade>
       </Modal>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar handleDelete={handleDelete} numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table
             stickyHeader aria-label="sticky table"
@@ -182,7 +165,7 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, row[0], index)}
+                    onClick={(event) => handleClick(event, row[0])}
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
@@ -199,11 +182,16 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
                         }}
                       />
                     </TableCell>
-                    {row.slice(1).splice(0,renderCols).map((cell, index) => (
-                      <TableCell component="th"
+                    <TableCell
+                      component="th"
                       id={labelId}
                       scope="row"
-                      key={index} align="left">{cell}</TableCell>
+                      padding="none"
+                    >
+                      {row[1]}
+                    </TableCell>
+                    {row.slice(2).map((cell, index) => (
+                      <TableCell key={index} align="left">{cell}</TableCell>
                     ))}
                   </TableRow>
                 );

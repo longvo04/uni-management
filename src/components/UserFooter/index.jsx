@@ -1,3 +1,6 @@
+import React from 'react';
+import CallIcon from '@mui/icons-material/Call';
+import MailIcon from '@mui/icons-material/Mail';
 
 
 const StudentFooter = () => {
@@ -6,7 +9,7 @@ const StudentFooter = () => {
       <div className="container">
         <div className="row py-4">
           <div className="col-lg-3 col-12 align-left">
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="lecturer.html">
               <span className="text-light h5">DEF</span> <span className="text-light h5 semi-bold-600">Uni</span>
             </a>
           </div>
@@ -15,12 +18,12 @@ const StudentFooter = () => {
             <h2 className="h4 pb-lg-3 text-light light-300">Liên hệ</h2>
             <ul className="list-unstyled text-light light-300">
               <li className="pb-2">
-                <i className='bx-fw bx bx-phone bx-xs'></i><a className="text-decoration-none text-light py-1"
-                  href="tel:010-020-0340">sdt</a>
+                <CallIcon fontSize="small" className="me-2" />
+                <a className="text-decoration-none text-light py-1" href="tel:010-020-0340">sdt</a>
               </li>
               <li className="pb-2">
-                <i className='bx-fw bx bx-mail-send bx-xs'></i><a className="text-decoration-none text-light py-1"
-                  href="mailto:info@company.com">mail@company.com</a>
+                <MailIcon fontSize="small" className="me-2" />
+                <a className="text-decoration-none text-light py-1" href="mailto:info@company.com">mail@company.com</a>
               </li>
             </ul>
           </div>
@@ -29,16 +32,15 @@ const StudentFooter = () => {
             <h2 className="h4 pb-lg-3 text-light light-300">Hỗ trợ</h2>
             <ul className="list-unstyled text-light light-300">
               <li className="pb-2">
-                <i className='bx-fw bx bx-phone bx-xs'></i><a className="text-decoration-none text-light py-1"
-                  href="tel:010-020-0340">sdt</a>
+                <CallIcon fontSize="small" className="me-2" />
+                <a className="text-decoration-none text-light py-1" href="tel:010-020-0340">sdt</a>
               </li>
               <li className="pb-2">
-                <i className='bx-fw bx bx-mail-send bx-xs'></i><a className="text-decoration-none text-light py-1"
-                  href="mailto:info@company.com">mail@company.com</a>
+                <MailIcon fontSize="small" className="me-2" />
+                <a className="text-decoration-none text-light py-1" href="mailto:info@company.com">mail@company.com</a>
               </li>
             </ul>
           </div>
-
         </div>
       </div>
 
