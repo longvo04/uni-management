@@ -1,26 +1,9 @@
-import '../../../assets/css/bootstrap.min.css';
-import '../../../assets/css/bootstrap.css';
-import '../../../assets/css/boxicon.min.css';
-import '../../../assets/css/custom.css';
-import '../../../assets/css/templatemo.css';
-import '../../../assets/css/style.css';
-import '../../../assets/js/bootstrap.bundle.min.js';
-import '../../../assets/js/custom.js';
-import '../../../assets/js/fslightbox.js';
-// import '../../../assets/js/fullcalendar.js';
-import '../../../assets/js/isotope.pkgd.js';
-import '../../../assets/js/jquery-1.10.2.js';
-import '../../../assets/js/jquery-ui.custom.min.js';
-import '../../../assets/js/jquery.min.js';
-import '../../../assets/js/templatemo.js';
-import '../../../assets/js/templatemo.min.js';
 import img1 from '../../../assets/img/recent-work-01.jpg';
 import img2 from '../../../assets/img/recent-work-02.jpg';
 import img3 from '../../../assets/img/recent-work-03.jpg';
 import img4 from '../../../assets/img/recent-work-04.jpg';
 import img5 from '../../../assets/img/recent-work-05.jpg';
 import img6 from '../../../assets/img/recent-work-06.jpg';
-
 
 const LecturerHomePage = () => {
   return (
@@ -178,7 +161,6 @@ const LecturerHomePage = () => {
                 </div>
               </a>
             </div>
-
           </div>
         </div>
       </section>

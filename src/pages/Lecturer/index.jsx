@@ -10,17 +10,20 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 const Lecturer = () => {
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', }}>
       <LecturerBar />
-      <Routes>
-        <Route path="/" >
-          <Route path="/home" element={<LecturerHomePage />} />
-          <Route path="/dashboard" element={<LecturerDashBoard />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/course-register" element={<CourseRegister />} />
-          <Route path="/LecturerInfor" element={<LecturerInfor />} />
-        </Route>
-      </Routes>
+
+      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '400px' }}>
+        <Routes>
+          <Route path="/" >
+            <Route path="/home" element={<LecturerHomePage />} />
+            <Route path="/dashboard" element={<LecturerDashBoard />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/course-register" element={<CourseRegister />} />
+            <Route path="/infor" element={<LecturerInfor />} />
+          </Route>
+        </Routes>
+      </Box>
       <LecturerFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       {/* <!-- Custom --> */}

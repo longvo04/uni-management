@@ -90,79 +90,151 @@ const Courses = () => {
   };
 
   return (
-    <Box>
-      <div className="margin-top"></div>
+    <Box sx={{ width: '100%', minHeight: '400px', backgroundColor: '#efefefef' }}>
+      <Box sx={{ height: '80px' }}></Box>
+      {/* Display Class Details */}
+      {selectedClass === null && (
+        <Box className="search-container" sx={{ backgroundColor: 'white' }}>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Tìm kiếm lớp học..."
+            className="form-control"
+            value={searchTermClass}
+            onChange={(e) => setSearchTermClass(e.target.value)}
+          />
+          <h4>Giảng viên: {classData['LTNC'][0].lecturer}</h4>
+          <ul id="courseList">
+            {filterClassData('LTNC', searchTermClass).map((detail) => (
+              <li
+                key={detail.name}
+                onClick={() => displayStudentDetails(detail.name)}
+              >
+                {`${detail.name} - Sĩ số: ${detail.size}`}
+              </li>
+            ))}
+          </ul>
+        </Box>
+      )}
 
-      <main className="container-lg py-5">
-        {/* Search Course */}
-        {selectedCourse === null && (
-          <Box className="search-container">
-            <input
-              type="text"
-              placeholder="Tìm kiếm khóa học..."
-              className="form-control"
-              value={searchTermCourse}
-              onChange={(e) => setSearchTermCourse(e.target.value)}
-            />
-            <ul>
-              {Object.keys(classData).filter(course => course.toLowerCase().includes(searchTermCourse.toLowerCase())).map((course) => (
-                <li key={course} onClick={() => displayClassDetails(course)}>
-                  {course}
-                </li>
-              ))}
-            </ul>
-          </Box>
-        )}
+      {/* Display Student Details */}
+      {selectedClass !== null && selectedStudent === null && (
+        <Box className="search-container" sx={{ backgroundColor: 'white' }}>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Tìm kiếm sinh viên..."
+            className="form-control"
+            value={searchTermStudent}
+            onChange={(e) => setSearchTermStudent(e.target.value)}
+          />
+          <h4>Danh sách học sinh - {selectedClass}</h4>
+          <ul id="courseList">
+            {filterStudentData(selectedClass, searchTermStudent).map((student) => (
+              <li key={student.mssv} onClick={() => displayStudentGrades(student)}>
+                {`${student.name}, ${student.mssv}`}
+              </li>
+            ))}
+          </ul>
+          <button className="btn btn-primary" onClick={handleBackToClass}>Trở về</button>
+        </Box>
+      )}
 
-        {/* Display Class Details */}
-        {selectedCourse !== null && selectedClass === null && (
-          <Box className="search-container">
-            <input
-              type="text"
-              placeholder="Tìm kiếm lớp học..."
-              className="form-control"
-              value={searchTermClass}
-              onChange={(e) => setSearchTermClass(e.target.value)}
-            />
-            <h4>Khóa học: {selectedCourse}</h4>
-            <ul>
-              {filterClassData(selectedCourse, searchTermClass).map((detail) => (
-                <li
-                  key={detail.name}
-                  onClick={() => displayStudentDetails(detail.name)}
-                >
-                  {`${detail.name} - Sĩ số: ${detail.size} - Giảng viên: ${detail.lecturer}`}
-                </li>
-              ))}
-            </ul>
-            <button className="btn btn-primary" onClick={handleBackToCourses}>Trở về</button>
-          </Box>
-        )}
-
-        {/* Display Student Details */}
-        {selectedClass !== null && (
-          <Box className="search-container">
-            <input
-              type="text"
-              placeholder="Tìm kiếm sinh viên..."
-              className="form-control"
-              value={searchTermStudent}
-              onChange={(e) => setSearchTermStudent(e.target.value)}
-            />
-            <h4>Danh sách học sinh - {selectedClass}</h4>
-            <ul>
-              {filterStudentData(selectedClass, searchTermStudent).map((student) => (
-                <li key={student.mssv}>
-                  {`${student.name}, ${student.mssv}, Điểm tổng kết: ${calculateFinalGrade(student)}`}
-                </li>
-              ))}
-            </ul>
-            <button className="btn btn-primary" onClick={handleBackToClass}>Trở về</button>
-          </Box>
-        )}
-      </main>
-
-      <div className="margin-bottom"></div>
+      {/* Display Student Grades */}
+      {selectedStudent !== null && (
+        <Box className="search-container" sx={{ backgroundColor: 'white' }}>
+          <h4>Điểm của {selectedStudent.name}</h4>
+          <ul id="courseList">
+            <li>
+              {`Điểm kiểm tra: ${selectedStudent.quiz}; thay đổi thành: `}
+              <input
+                type="number"
+                value={selectedStudent.quiz}
+                min="0"
+                max="10"
+                style={{ marginLeft: '10px', width: '50px' }}
+                onChange={(e) => {
+                  if (e.target.value >= 0 && e.target.value <= 10) {
+                    selectedStudent.quiz = e.target.value;
+                    setSelectedStudent({ ...selectedStudent });
+                  }
+                }}
+              />
+            </li>
+            <li>
+              {`Điểm bonus: ${selectedStudent.bonus}; thay đổi thành: `}
+              <input
+                type="number"
+                value={selectedStudent.bonus}
+                min="0"
+                max="10"
+                style={{ marginLeft: '10px', width: '50px' }}
+                onChange={(e) => {
+                  if (e.target.value >= 0 && e.target.value <= 10) {
+                    selectedStudent.bonus = e.target.value;
+                    setSelectedStudent({ ...selectedStudent });
+                  }
+                }}
+              />
+            </li>
+            <li>
+              {`Điểm bài tập: ${selectedStudent.homework}; thay đổi thành: `}
+              <input
+                type="number"
+                value={selectedStudent.homework}
+                min="0"
+                max="10"
+                style={{ marginLeft: '10px', width: '50px' }}
+                onChange={(e) => {
+                  if (e.target.value >= 0 && e.target.value <= 10) {
+                    selectedStudent.homework = e.target.value;
+                    setSelectedStudent({ ...selectedStudent });
+                  }
+                }}
+              />
+            </li>
+            <li>
+              {`Điểm giữa kỳ: ${selectedStudent.midTerm}; thay đổi thành: `}
+              <input
+                type="number"
+                value={selectedStudent.midTerm}
+                min="0"
+                max="10"
+                style={{ marginLeft: '10px', width: '50px' }}
+                onChange={(e) => {
+                  if (e.target.value >= 0 && e.target.value <= 10) {
+                    selectedStudent.midTerm = e.target.value;
+                    setSelectedStudent({ ...selectedStudent });
+                  }
+                }}
+              />
+            </li>
+            <li>
+              {`Điểm cuối kỳ: ${selectedStudent.finalTerm}; thay đổi thành: `}
+              <input
+                type="number"
+                value={selectedStudent.finalTerm}
+                min="0"
+                max="10"
+                style={{ marginLeft: '10px', width: '50px' }}
+                onChange={(e) => {
+                  if (e.target.value >= 0 && e.target.value <= 10) {
+                    selectedStudent.finalTerm = e.target.value;
+                    setSelectedStudent({ ...selectedStudent });
+                  }
+                }}
+              />
+            </li>
+            <li>
+              <Box>
+                {`Điểm tổng kết: ${calculateFinalGrade(selectedStudent)}`}
+              </Box>
+            </li>
+          </ul>
+          <button className="btn btn-primary" onClick={handleBackToStudent}>Trở về</button>
+        </Box>
+      )}
+      <Box sx={{ height: '80px' }}></Box>
     </Box>
   );
 };

@@ -21,7 +21,7 @@ const Student = () => {
           <Route path="/StudentInfor" element={<StudentInfor />} />
         </Route>
       </Routes>
-      <UserFooter />
+      <LecturerFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       {/* <!-- Custom --> */}
       <script src="assets/js/custom.js"></script>

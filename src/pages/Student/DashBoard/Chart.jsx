@@ -13,7 +13,6 @@ const data = [
   { semeter: 'Học kỳ 222', grade: 3.5 },
   { semeter: 'Học kỳ 231', grade: 3.8 },
   { semeter: 'Học kỳ 232', grade: 3.6 },
-  
 ];
 
 const Chart = () => {
@@ -37,7 +36,7 @@ const Chart = () => {
               dataKey: 'semeter',
               tickNumber: 2,
               tickLabelStyle: theme.typography.body2,
-              tisks: ['Học kỳ 221','Học kỳ 222','Học kỳ 231','Học kỳ 232'],
+              tisks: ['Học kỳ 221', 'Học kỳ 222', 'Học kỳ 231', 'Học kỳ 232'],
             },
           ]}
           yAxis={[
