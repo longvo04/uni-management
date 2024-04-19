@@ -1,30 +1,57 @@
-import '../../../assets/css/bootstrap.min.css';
-import '../../../assets/css/bootstrap.css';
-import '../../../assets/css/boxicon.min.css';
-import '../../../assets/css/custom.css';
-import '../../../assets/css/templatemo.css';
-import '../../../assets/css/style.css';
-import '../../../assets/js/bootstrap.bundle.min.js';
-import '../../../assets/js/custom.js';
-import '../../../assets/js/fslightbox.js';
-// import '../../../assets/js/fullcalendar.js';
-import '../../../assets/js/isotope.pkgd.js';
-import '../../../assets/js/jquery-1.10.2.js';
-import '../../../assets/js/jquery-ui.custom.min.js';
-import '../../../assets/js/jquery.min.js';
-import '../../../assets/js/templatemo.js';
-import '../../../assets/js/templatemo.min.js';
-import img1 from '../../../assets/img/recent-work-01.jpg';
-import img2 from '../../../assets/img/recent-work-02.jpg';
-import img3 from '../../../assets/img/recent-work-03.jpg';
-import img4 from '../../../assets/img/recent-work-04.jpg';
-import img5 from '../../../assets/img/recent-work-05.jpg';
-import img6 from '../../../assets/img/recent-work-06.jpg';
+import '../../assets/css/bootstrap.min.css';
+import '../../assets/css/bootstrap.css';
+import '../../assets/css/boxicon.min.css';
+import '../../assets/css/custom.css';
+import '../../assets/css/templatemo.css';
+import '../../assets/css/style.css';
+import '../../assets/js/bootstrap.bundle.min.js';
+import '../../assets/js/custom.js';
+import '../../assets/js/fslightbox.js';
+// import '../../assets/js/fullcalendar.js';
+import '../../assets/js/isotope.pkgd.js';
+import '../../assets/js/jquery-1.10.2.js';
+import '../../assets/js/jquery-ui.custom.min.js';
+import '../../assets/js/jquery.min.js';
+import '../../assets/js/templatemo.js';
+import '../../assets/js/templatemo.min.js';
+import img1 from '../../assets/img/recent-work-01.jpg';
+import img2 from '../../assets/img/recent-work-02.jpg';
+import img3 from '../../assets/img/recent-work-03.jpg';
+import img4 from '../../assets/img/recent-work-04.jpg';
+import img5 from '../../assets/img/recent-work-05.jpg';
+import img6 from '../../assets/img/recent-work-06.jpg';
+import logo from '../../assets/img/logo.jpg'
+import { Button } from '@mui/material';
 
 
-const StudentHomePage = () => {
+const HomePage = () => {
   return (
     <div>
+      <nav id="main_nav" className="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div className="container d-flex justify-content-between align-items-center">
+          <a className="navbar-brand h1" href="/">
+            <img src={logo} className="icon-head" />
+            <span className="text-dark h4">DEF</span> <span className="text-primary h4">Uni</span>
+          </a>
+          <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+            id="navbar-toggler-success">
+            <div className="flex-fill mx-xl-5 mb-2">
+              <ul className="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                <li className="nav-item">
+                  <a className="nav-link btn-outline-primary rounded-pill px-3" href="/">Trang chủ</a>
+                </li>
+                
+              </ul>
+            </div>
+            <Button variant='outlined' href='/choose'>Đăng nhập</Button>
+          </div>
+        </div>
+      </nav>
       <div className="banner-wrapper bg-light">
         <div id="index_banner" className="banner-vertical-center-index container-fluid pt-5">
           <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
@@ -186,4 +213,4 @@ const StudentHomePage = () => {
   );
 }
 
-export default StudentHomePage;
+export default HomePage;

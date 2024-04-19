@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import LecturerBar from '../../components/LecturerBar';
 import LecturerHomePage from './HomePage';
 import LecturerDashBoard from './DashBoard';
@@ -24,7 +24,6 @@ const Lecturer = () => {
           </Route>
         </Routes>
       </Box>
-
       <LecturerFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       {/* <!-- Custom --> */}

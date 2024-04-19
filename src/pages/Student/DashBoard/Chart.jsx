@@ -13,7 +13,6 @@ const data = [
   { semeter: 'Học kỳ 222', grade: 3.5 },
   { semeter: 'Học kỳ 231', grade: 3.8 },
   { semeter: 'Học kỳ 232', grade: 3.6 },
-
 ];
 
 const Chart = () => {

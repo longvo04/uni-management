@@ -1,9 +1,5 @@
-import '../../assets/css/bootstrap.min.css';
-import '../../assets/css/bootstrap.css';
-import '../../assets/css/boxicon.min.css';
-import '../../assets/css/custom.css';
-import '../../assets/css/templatemo.css';
-import '../../assets/css/style.css';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from '../../assets/img/logo.jpg';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -14,7 +10,7 @@ const StudentBar = () => {
     <nav id="main_nav" className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container d-flex justify-content-between align-items-center">
         <a className="navbar-brand h1" href="/student">
-          <img src={logo} style={{ width: '25px' }} className="icon-head" />
+          <img src={logo} className="icon-head" />
           <span className="text-dark h4">DEF</span> <span className="text-primary h4">Uni</span>
         </a>
         <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
@@ -30,10 +26,10 @@ const StudentBar = () => {
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/home">Trang chủ</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/dashboard">Bảng điều khiển</a>
+                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/calander">Bảng điều khiển</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/course-register">Đăng ký lớp học</a>
+                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/course-register">Đăng ký môn học</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/courses">Khóa học</a>

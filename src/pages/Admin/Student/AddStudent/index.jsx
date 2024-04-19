@@ -14,17 +14,33 @@ import Button from '@mui/material/Button';
 
 
 const AddStudent = () => {
-  const [major, setMajor] = React.useState('Khoa học và kỹ thuật máy tính');
-  const [gender, setGender] = React.useState('Nam');
-  const [fullName, setFullName] = React.useState('');
+  //id, name, mssv, group, major, dob, gender, email, password
+  const [name, setName] = React.useState('');
   const [studentId, setStudentId] = React.useState('');
-  const [dob, setDob] = React.useState('');
   const [group, setGroup] = React.useState('');
+  const [major, setMajor] = React.useState('Khoa học và kỹ thuật máy tính');
+  const [dob, setDob] = React.useState('');
+  const [gender, setGender] = React.useState('Nam');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
+  
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  }
+
+  const handleChangeStudentId = (event) => {
+    setStudentId(event.target.value);
+  }
+  
   const handleChangeGroup = (event) => {
     setGroup(event.target.value);
   }
-
+  
+  const handleChangeMajor = (event) => {
+    setMajor(event.target.value);
+  }
+  
   const handleChangeDob = (date) => {
     const day = `${date.$D}`
     const month = `${date.$M+1}`
@@ -34,29 +50,31 @@ const AddStudent = () => {
     console.log(dob)
   }
 
-  const handleChangeStudentId = (event) => {
-    setStudentId(event.target.value);
-  }
-
-  const handleChangeFullName = (event) => {
-    setFullName(event.target.value);
-  }
-
-  const handleChangeMajor = (event) => {
-    setMajor(event.target.value);
-  };
-
   const handleChangeGender = (event) => {
     setGender(event.target.value);
   }
 
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  }
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  }
+
+
   const handleSubmit = () => {
+    if (!name || !studentId || !group || !major || !dob || !gender || !email || !password) alert('Vui lòng nhập đầy đủ thông tin')
+
     const student = {
-      fullName: fullName,
-      studentId: studentId,
-      dob: dob,
-      group: group,
-      major
+      name,
+      studentId,
+      group,
+      major,
+      dob,
+      gender,
+      email,
+      password
     }
     // Handle submit
     console.log(student)
@@ -77,12 +95,23 @@ const AddStudent = () => {
         noValidate
         autoComplete="off"
       >
-        
+        <TextField
+          required
+          id="email"
+          label="Email"
+          onChange={handleChangeEmail}
+        />
+        <TextField
+          required
+          id="password"
+          label="Mật khẩu"
+          onChange={handleChangePassword}
+        />
         <TextField
           required
           id="name"
           label="Họ & tên"
-          onChange={handleChangeFullName}
+          onChange={handleChangeName}
         />
         <TextField
           required
