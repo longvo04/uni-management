@@ -10,10 +10,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 const Lecturer = () => {
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', }}>
       <LecturerBar />
 
-      <Box sx={{ width: '100%', minHeight: '400px' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '400px' }}>
         <Routes>
           <Route path="/" >
             <Route path="/home" element={<LecturerHomePage />} />

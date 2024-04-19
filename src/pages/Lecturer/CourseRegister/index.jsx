@@ -18,13 +18,33 @@ const data1 = [
         day: 'Thứ 2 - Thứ 3',
         time: 'Tiết 1-2',
         week: '-1-2-3-4-5-6-7-8-9-'
+      },
+      {
+        id: 2,
+        name: 'LTNC 2024',
+        code: 'CO2342',
+        credit: '4',
+        studentNumber: '74/140',
+        day: 'Thứ 2 - Thứ 3',
+        time: 'Tiết 1-2',
+        week: '-1-2-3-4-5-6-7-8-9-'
+      },
+      {
+        id: 3,
+        name: 'LTNC 2024',
+        code: 'CO2342',
+        credit: '4',
+        studentNumber: '74/140',
+        day: 'Thứ 2 - Thứ 3',
+        time: 'Tiết 1-2',
+        week: '-1-2-3-4-5-6-7-8-9-'
       }
     ]
   }
 ];
 
 const Table1 = ({ data, onRowClick }) => (
-  <table className="custom-table">
+  <table style={{ backgroundColor: '#efefefef' }} className="custom-table">
     <thead>
       <tr>
         <th>STT</th>
@@ -47,7 +67,7 @@ const Table1 = ({ data, onRowClick }) => (
 );
 
 const Table2 = ({ data, onRegisterClick }) => (
-  <table className="custom-table">
+  <table style={{ backgroundColor: '#efefefef' }} className="custom-table">
     <thead>
       <tr>
         <th>STT</th>

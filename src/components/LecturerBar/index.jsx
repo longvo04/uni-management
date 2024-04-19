@@ -43,7 +43,7 @@ const LecturerBar = () => {
 
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
           <Button href="/lecturer/home" style={buttonStyle}>Trang chủ</Button>
-          <Button href="/lecturer/dashboard" style={buttonStyle}>Bảng điều khiển</Button>
+          {/* <Button href="/lecturer/dashboard" style={buttonStyle}>Bảng điều khiển</Button> */}
           <Button href="/lecturer/course-register" style={buttonStyle}>Đăng ký nhận lớp</Button>
           <Button href="/lecturer/courses" style={buttonStyle}>Khóa học</Button>
         </Box>
