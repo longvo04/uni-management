@@ -13,20 +13,32 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 
 
-
+// id, name, mssv, group, major, dob, gender, email, password
 const EditStudent = ({ data }) => {
-  console.log(data)
 
-  const [gender, setGender] = React.useState('Nam');
   const [fullName, setFullName] = React.useState(data[1]);
   const [studentId, setStudentId] = React.useState(data[2]);
   const [group, setGroup] = React.useState(data[3]);
-  const [major, setMajor] = React.useState('Khoa học và kỹ thuật máy tính');
+  const [major, setMajor] = React.useState(data[4]);
   const [dob, setDob] = React.useState(data[5]);
-  console.log(dob)
+  const [gender, setGender] = React.useState(data[6]);
+  const [email, setEmail] = React.useState(data[7]);
+  const [password, setPassword] = React.useState(data[8]);
+  
+  const handleChangeFullName = (event) => {
+    setFullName(event.target.value);
+  }
+
+  const handleChangeStudentId = (event) => {
+    setStudentId(event.target.value);
+  }
 
   const handleChangeGroup = (event) => {
     setGroup(event.target.value);
+  }
+
+  const handleChangeMajor = (event) => {
+    setMajor(event.target.value);
   }
 
   const handleChangeDob = (date) => {
@@ -37,21 +49,17 @@ const EditStudent = ({ data }) => {
     setDob(dob)
     console.log(dob)
   }
-
-  const handleChangeStudentId = (event) => {
-    setStudentId(event.target.value);
-  }
-
-  const handleChangeFullName = (event) => {
-    setFullName(event.target.value);
-  }
-
-  const handleChangeMajor = (event) => {
-    setMajor(event.target.value);
-  };
-
+  
   const handleChangeGender = (event) => {
     setGender(event.target.value);
+  }
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  }
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
   }
 
   const handleSubmit = () => {
@@ -63,7 +71,8 @@ const EditStudent = ({ data }) => {
       major,
       dob,
       gender,
-      address
+      email,
+      password
     }
     // Handle submit
     console.log(student)
@@ -84,7 +93,20 @@ const EditStudent = ({ data }) => {
         noValidate
         autoComplete="off"
       >
-        
+        <TextField
+          required
+          id="email"
+          label="Email"
+          value={email}
+          onChange={handleChangeEmail}
+        />
+        <TextField
+          required
+          id="password"
+          label="Mật khẩu"
+          value={password}
+          onChange={handleChangePassword}
+        />
         <TextField
           required
           id="name"
@@ -129,7 +151,7 @@ const EditStudent = ({ data }) => {
         </LocalizationProvider>
         <Box sx={{ minWidth: 230, maxWidth: 230, marginTop: 2}}>
           <FormControl fullWidth>
-            <InputLabel id="gender-label">Khoa</InputLabel>
+            <InputLabel id="gender-label">Giới tính</InputLabel>
             <Select
               labelId="gender-label"
               id="gender-select"
