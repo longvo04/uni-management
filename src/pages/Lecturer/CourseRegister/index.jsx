@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import '../../../assets/css/style.css';
 
 const data1 = [
@@ -109,12 +110,9 @@ const Table2 = ({ data, onRegisterClick }) => (
             </table>
           </td>
           <td>
-            <button
-              className="btn btn-primary"
-              onClick={() => onRegisterClick(subject)}
-            >
+            <Button variant="contained" color={subject.isRegistered ? "secondary" : "primary"} onClick={() => onRegisterClick(subject)}>
               {subject.isRegistered ? 'Hủy' : 'Nhận'}
-            </button>
+            </Button>
           </td>
         </tr>
       ))}
@@ -149,12 +147,7 @@ const Table3 = ({ registeredSubjects, onCancelClick }) => (
             <td>{subject.time.join(', ')}</td>
             <td>{subject.week.join(', ')}</td>
             <td>
-              <button
-                className="btn btn-danger"
-                onClick={() => onCancelClick(subject)}
-              >
-                Hủy
-              </button>
+              <Button variant="contained" color="secondary" onClick={() => onCancelClick(subject)}>Hủy</Button>
             </td>
           </tr>
         ))}
@@ -214,7 +207,7 @@ const CourseRegister = () => {
         ) : (
           <>
             <Table2 data={selectedData} onRegisterClick={handleRegisterClick} />
-            <button className="btn btn-primary" onClick={handleBackClick}>Trở về</button>
+            <Button variant="contained" color="primary" onClick={handleBackClick}>Trở về</Button>
             <Table3 registeredSubjects={registeredSubjects} onCancelClick={handleCancelClick} />
           </>
         )}
