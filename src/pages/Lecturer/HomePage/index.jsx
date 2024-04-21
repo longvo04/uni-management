@@ -1,3 +1,6 @@
+import Box from '@mui/material/Box';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import img1 from '../../../assets/img/recent-work-01.jpg';
 import img2 from '../../../assets/img/recent-work-02.jpg';
 import img3 from '../../../assets/img/recent-work-03.jpg';
@@ -21,75 +24,57 @@ const LecturerHomePage = () => {
 
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
-                    <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
+                    <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300">
                       Hướng dẫn sử dụng
                     </h1>
-                    <p className="banner-body text-muted py-3 mx-0 px-0">
-
-                    </p>
-                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View
-                      more</a>
+                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View more</a>
                   </div>
                 </div>
 
               </div>
               <div className="carousel-item">
-
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
                     <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
                       Thông tin hoạt động sinh viên
                     </h1>
-                    <p className="banner-body text-muted py-3">
-
-                    </p>
-                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View
-                      more</a>
+                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View more</a>
                   </div>
                 </div>
-
               </div>
-              <div className="carousel-item">
 
+              <div className="carousel-item">
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
                     <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
                       Thông tin học vụ
                     </h1>
-                    <p className="banner-body text-muted py-3">
-
-                    </p>
-                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View
-                      more</a>
+                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View more</a>
                   </div>
                 </div>
-
               </div>
             </div>
             <a className="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button"
               data-bs-slide="prev">
               <i className='bx bx-chevron-left'></i>
-              <span className="visually-hidden">Previous</span>
+              <ArrowBackIosNewIcon sx={{ fontSize: 100 }} />
             </a>
             <a className="carousel-control-next text-decoration-none" href="#carouselExampleIndicators" role="button"
               data-bs-slide="next">
-              <i className='bx bx-chevron-right'></i>
-              <span className="visually-hidden">Next</span>
+              <i className='bx bx-chevron-right'><ArrowForwardIosIcon /></i>
+              <ArrowForwardIosIcon sx={{ fontSize: 100 }} />
             </a>
           </div>
-
-
         </div>
       </div>
-
 
       <section className="py-5 mb-5">
         <div className="container">
           <div className="recent-work-header row text-center pb-5">
             <h2 className="col-md-6 m-auto h2 semi-bold-600 py-5">Thông báo chung</h2>
           </div>
-          <div className="row gy-5 g-lg-5 mb-4">
 
+          <div className="row gy-5 g-lg-5 mb-4">
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
                 <img className="recent-work-img card-img" src={img1} alt="Card image" />

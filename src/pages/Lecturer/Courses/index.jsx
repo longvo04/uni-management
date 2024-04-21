@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import '../../../assets/css/style.css';
 
 const Courses = () => {
@@ -7,6 +9,7 @@ const Courses = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [searchTermClass, setSearchTermClass] = useState('');
   const [searchTermStudent, setSearchTermStudent] = useState('');
+  const [file, setFile] = useState(null);
 
   const classData = {
     'LTNC': [
@@ -70,6 +73,21 @@ const Courses = () => {
     setSearchTermStudent('');
   };
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+  };
+
+  const handleUpload = () => {
+    if (file) {
+      // Đây là nơi để bạn xử lý việc tải lên file.
+
+      alert(`File ${file.name} đã được tải lên.`);
+    } else {
+      alert('Vui lòng chọn một file trước khi tải lên.');
+    }
+  };
+
   return (
     <Box sx={{ width: '100%', minHeight: '400px', backgroundColor: '#efefefef' }}>
       <Box sx={{ height: '80px' }}></Box>
@@ -95,7 +113,13 @@ const Courses = () => {
               </li>
             ))}
           </ul>
+          <Box className="file-upload-container">
+            <Typography variant="h5" mb={2}>Tải lên file</Typography>
+            <input type="file" onChange={handleFileChange} style={{ marginBottom: '20px' }} />
+            <Button variant="contained" color="primary" onClick={handleUpload}>Tải lên</Button>
+          </Box>
         </Box>
+
       )}
 
       {/* Display Student Details */}
@@ -117,7 +141,7 @@ const Courses = () => {
               </li>
             ))}
           </ul>
-          <button className="btn btn-primary" onClick={handleBackToClass}>Trở về</button>
+          <Button variant="contained" color="primary" onClick={handleBackToClass}>Trở về</Button>
         </Box>
       )}
 
@@ -212,9 +236,10 @@ const Courses = () => {
               </Box>
             </li>
           </ul>
-          <button className="btn btn-primary" onClick={handleBackToStudent}>Trở về</button>
+          <Button variant="contained" color="primary" onClick={handleBackToStudent}>Trở về</Button>
         </Box>
       )}
+
       <Box sx={{ height: '80px' }}></Box>
     </Box>
   );
