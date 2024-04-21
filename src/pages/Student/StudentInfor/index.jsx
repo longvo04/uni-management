@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../assets/css/style.css';
 import '../../../assets/css/templatemo.css';
 
-const LecturerInfor = () => {
+const StudentInfor = () => {
   return (
     <div className="personal-info" id="inforBody">
       <table>
@@ -28,7 +28,7 @@ const LecturerInfor = () => {
             <td>0123456789</td>
           </tr>
           <tr>
-            <td>Mã giảng viên:</td>
+            <td>Mã sinh viên:</td>
             <td>GV0000000</td>
           </tr>
           <tr>
@@ -45,4 +45,4 @@ const LecturerInfor = () => {
   );
 };
 
-export default LecturerInfor;
+export default StudentInfor;
