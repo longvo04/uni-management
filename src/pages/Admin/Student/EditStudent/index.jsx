@@ -11,7 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-
+import { db } from '../../../../firebase/client';
+import { doc, updateDoc } from "firebase/firestore"; 
 
 // id, name, mssv, group, major, dob, gender, email, password
 const EditStudent = ({ data }) => {
@@ -21,6 +22,7 @@ const EditStudent = ({ data }) => {
   const [group, setGroup] = React.useState(data[3]);
   const [major, setMajor] = React.useState(data[4]);
   const [dob, setDob] = React.useState(data[5]);
+  console.log(dob)
   const [gender, setGender] = React.useState(data[6]);
   const [email, setEmail] = React.useState(data[7]);
   const [password, setPassword] = React.useState(data[8]);
@@ -42,12 +44,12 @@ const EditStudent = ({ data }) => {
   }
 
   const handleChangeDob = (date) => {
-    const day = `${date.$D}`
-    const month = `${date.$M+1}`
+    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
+    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
     const year = `${date.$y}`
-    const dob = `${day}/${month}/${year}`
+    const dob = `${day}-${month}-${year}`
+
     setDob(dob)
-    console.log(dob)
   }
   
   const handleChangeGender = (event) => {
@@ -62,11 +64,10 @@ const EditStudent = ({ data }) => {
     setPassword(event.target.value);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const student = {
-      id: data[0],
-      fullName,
-      studentId,
+      name: fullName,
+      mssv: studentId,
       group,
       major,
       dob,
@@ -75,7 +76,11 @@ const EditStudent = ({ data }) => {
       password
     }
     // Handle submit
-    console.log(student)
+    const userRef =  doc(db, 'users', data[0]);
+    const docRef = await updateDoc(doc(db, "users", data[0]), {
+      ...student
+    });
+    alert('Cập nhật thông tin thành công')
   }
 
   return (

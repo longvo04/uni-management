@@ -22,7 +22,7 @@ function App() {
 
         {currentRole === 'admin' && <Admin />}
         {currentRole === 'student' && <Student />}
-        {currentRole === 'lecturer' && <Lecturer />}
+        {currentRole === 'teacher' && <Lecturer />}
       </BrowserRouter>
     </Container>
   )

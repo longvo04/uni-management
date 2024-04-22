@@ -10,7 +10,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-
+import { db } from '../../../../firebase/client';
+import { collection, addDoc, doc } from "firebase/firestore"; 
 
 
 const AddCourse = () => {
@@ -36,15 +37,20 @@ const AddCourse = () => {
     setMajor(event.target.value);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const course = {
       courseId,
       courseName,
       credit,
-      major
+      major,
+      classList: []
     }
     // Handle submit
-    console.log(course)
+    const docRef = await addDoc(collection(db, "courses"), {
+      ...course
+    });
+    if(!docRef.id) alert('Thêm khóa học thất bại')
+    else alert('Thêm khóa học thành công')
   }
 
   return (

@@ -25,6 +25,12 @@ const LecturerBar = () => {
   const handleNotiClick = (event) => setAnchorNotiEl(event.currentTarget);
   const handleNotiClose = () => setAnchorNotiEl(null);
 
+  const handleSignOut = () => {
+    localStorage.removeItem('uid');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+  }
+
   const notiId = openNoti ? 'notifications-popover' : undefined;
 
   return (
@@ -126,7 +132,7 @@ const LecturerBar = () => {
               <a className="dropdown-item" href="" >Cài đặt</a>
             </MenuItem>
             <MenuItem>
-              <a className="dropdown-item" href="" >Đăng xuất</a>
+              <a className="dropdown-item" href="" onClick={handleSignOut} >Đăng xuất</a>
             </MenuItem>
           </Menu>
         </Box>

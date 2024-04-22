@@ -4,6 +4,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Divider from '@mui/material/Divider';
 
 const StudentBar = () => {
+  const handleSignOut = () => {
+    localStorage.removeItem('uid');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+  }
+
+
   return (
     <nav id="main_nav" className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container d-flex justify-content-between align-items-center">
@@ -46,7 +53,7 @@ const StudentBar = () => {
               <li><a className="dropdown-item" href="/student/infor">Thông tin cá nhân</a></li>
               <Divider />
               <li><a className="dropdown-item" href="#">Cài đặt</a></li>
-              <li><a className="dropdown-item" href="#">Đăng xuất</a></li>
+              <li><a className="dropdown-item" href="#" onClick={handleSignOut}>Đăng xuất</a></li>
             </ul>
           </div>
         </div>

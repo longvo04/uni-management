@@ -10,8 +10,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-
-
+import { db } from '../../../../firebase/client';
+import { collection, addDoc } from "firebase/firestore"; 
 
 const AddStudent = () => {
   //id, name, mssv, group, major, dob, gender, email, password
@@ -23,7 +23,7 @@ const AddStudent = () => {
   const [gender, setGender] = React.useState('Nam');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
+  const uid = localStorage.getItem('uid');
   
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -42,12 +42,12 @@ const AddStudent = () => {
   }
   
   const handleChangeDob = (date) => {
-    const day = `${date.$D}`
-    const month = `${date.$M+1}`
+    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
+    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
     const year = `${date.$y}`
-    const dob = `${day}/${month}/${year}`
+    const dob = `${day}-${month}-${year}`
+
     setDob(dob)
-    console.log(dob)
   }
 
   const handleChangeGender = (event) => {
@@ -63,21 +63,26 @@ const AddStudent = () => {
   }
 
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!name || !studentId || !group || !major || !dob || !gender || !email || !password) alert('Vui lòng nhập đầy đủ thông tin')
 
     const student = {
       name,
-      studentId,
+      mssv: studentId,
       group,
       major,
       dob,
       gender,
       email,
-      password
+      password,
+      role: 'student',
     }
     // Handle submit
-    console.log(student)
+    const docRef = await addDoc(collection(db, "users"), {
+      ...student
+    });
+    if (!docRef.id) alert('Thêm sinh viên thất bại')
+    else alert('Thêm sinh viên thành công')
   }
 
   return (

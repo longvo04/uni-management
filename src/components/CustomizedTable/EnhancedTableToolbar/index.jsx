@@ -53,38 +53,11 @@ function EnhancedTableToolbar(props) {
         </Typography>
       )}
 
-      {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton onClick={handleDelete}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
-      ) : (
-        <Box sx={{ display: 'flex', flexDirection: 'row'}}>
-          <TextField
-            required
-            id="lecturerId"
-            label={filter}
-          />
-          <Box sx={{ minWidth: 200, maxWidth: 200, marginRight: 1, marginLeft: 1}}>
-            <FormControl fullWidth>
-              <InputLabel id="major-label">Lọc</InputLabel>
-              <Select
-                align="left"
-                labelId="major-label"
-                id="major-select"
-                value={filter}
-                label="Major"
-                onChange={handleChangeFilter}
-              >
-                <MenuItem value={'Mã số sinh viên'}>Mã số sinh viên</MenuItem>
-                <MenuItem value={'Họ và tên'}>Họ và tên</MenuItem>
-                <MenuItem value={'Lớp'}>Lớp</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </Box>
-      )}
     </Toolbar>
   );
 }
