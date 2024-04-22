@@ -20,9 +20,9 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
         </Routes>}
 
-        {currentRole === 'Admin' && <Admin />}
-        {currentRole === 'Student' && <Student />}
-        {currentRole === 'Lecturer' && <Lecturer />}
+        {currentRole === 'admin' && <Admin />}
+        {currentRole === 'student' && <Student />}
+        {currentRole === 'lecturer' && <Lecturer />}
       </BrowserRouter>
     </Container>
   )

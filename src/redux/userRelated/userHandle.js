@@ -1,4 +1,9 @@
-import axios from 'axios';
+import { auth, db, collection, doc, setDoc, getDocFromServer } from "../../firebase/client.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
+
 import {
     authRequest,
     stuffAdded,
@@ -14,20 +19,48 @@ import {
 } from './userSlice';
 
 export const loginUser = (fields, role) => async (dispatch) => {
-    // test
-    if (role == "Admin") dispatch(authSuccess("Admin"))
-    else if (role == "Student") dispatch(authSuccess("Student"))
-    else if (role == "Lecturer") dispatch(authSuccess("Lecturer"))
+    // // test
+    // if (role == "Admin") dispatch(authSuccess("Admin"))
+    // else if (role == "Student") dispatch(authSuccess("Student"))
+    // else if (role == "Lecturer") dispatch(authSuccess("Lecturer"))
     // end test
-
-    // dispatch(authRequest());
-    // role = Student || Lecturer || Admin
-    // handle login user
-    // try {
-
-    // } catch (error) {
-    //     dispatch(authError(error));
-    // }
+    const { email, password } = fields;
+    try {
+		const { user } = await signInWithEmailAndPassword(auth, email, password);
+        console.log(user.uid)
+		const api_res = await fetch("http://localhost:3000/api/auth", {
+			method: "POST",
+            credentials: "include",
+			headers: {
+                "Access-Control-Allow-Origin": "http://localhost:5173",
+				Authorization: `Bearer ${await user.getIdToken()}`,
+			},
+		})
+		if (!api_res.ok) {
+			console.log(await api_res.text());
+		}
+        const uid = user.uid;
+        try {
+            const docRef = doc(db, "users", uid);
+            const docSnap = await getDocFromServer(docRef);
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                const currentRole = data.role;
+                localStorage.setItem('uid', JSON.stringify(uid))
+                dispatch(authSuccess(currentRole));
+              } else {
+                // docSnap.data() will be undefined in this case
+                throw new Error("No such User!");
+              }
+		} catch (error) {
+			console.error(error.code, error.message);
+		}
+        
+	} catch (error) {
+		return res.status(400).send("Invalid email or password");
+        // dispatch(authError(error));
+	}
+    
 };
 
 // Handle Register

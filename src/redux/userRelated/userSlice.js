@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-console.log((JSON.parse(localStorage.getItem('user')) || {}).role || null)
-
 const initialState = {
     status: 'idle',
     userDetails: [],
