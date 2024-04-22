@@ -48,7 +48,7 @@ const LoginPage = ({ role }) => {
             }
             else if (currentRole === 'Student') {
                 navigate('/student');
-            } else if (currentRole === 'Teacher') {
+            } else {
                 navigate('/lecturer');
             }
         }

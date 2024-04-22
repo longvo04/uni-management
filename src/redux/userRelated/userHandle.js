@@ -14,8 +14,13 @@ import {
 } from './userSlice';
 
 export const loginUser = (fields, role) => async (dispatch) => {
-    dispatch(authSuccess({name: 'long'})) // for testing
-    dispatch(authRequest());
+    // test
+    if (role == "Admin") dispatch(authSuccess("Admin"))
+    else if (role == "Student") dispatch(authSuccess("Student"))
+    else dispatch(authSuccess("Lecturer"))
+    // end test
+
+    // dispatch(authRequest());
     // role = Student || Lecturer || Admin
     // handle login user
     try {

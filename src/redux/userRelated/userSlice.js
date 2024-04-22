@@ -31,10 +31,15 @@ const userSlice = createSlice({
         },
         authSuccess: (state, action) => {
             state.status = 'success';
-            state.currentUser = action.payload;
+            console.log(action.payload)
+            //test
+            state.currentRole = action.payload;
+            //end test
+
+            // uncomment this
+            // state.currentUser = action.payload;
             // state.currentRole = action.payload.role;
-            state.currentRole = "Student" // for testing
-            localStorage.setItem('user', JSON.stringify(action.payload));
+            // localStorage.setItem('user', JSON.stringify(action.payload));
             state.response = null;
             state.error = null;
         },

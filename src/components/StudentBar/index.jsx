@@ -1,5 +1,3 @@
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from '../../assets/img/logo.jpg';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -26,7 +24,7 @@ const StudentBar = () => {
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/home">Trang chủ</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/calander">Bảng điều khiển</a>
+                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/dashboard">Bảng điều khiển</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/course-register">Đăng ký môn học</a>

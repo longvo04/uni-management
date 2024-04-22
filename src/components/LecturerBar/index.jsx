@@ -1,12 +1,42 @@
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import Badge from '@mui/material/Badge';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import React from 'react';
+
 import logo from '../../assets/img/logo.jpg';
 
+const buttonStyle = {
+  color: 'white',
+};
+
 const LecturerBar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => setAnchorEl(event.currentTarget)
+  const handleClose = () => setAnchorEl(null)
+
   return (
-    <nav id="main_nav" className="navbar navbar-expand-lg navbar-light bg-white shadow">
-      <div className="container d-flex justify-content-between align-items-center">
-        <a className="navbar-brand h1" href="/student">
+    <Box sx={{
+      width: '100%',
+      height: '60px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: 4,
+      paddingX: 8,
+      overflowX: 'auto',
+      bgcolor: '#399be2',
+      color: 'white',
+    }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <img src={logo} className="icon-head" />
           <a>DEF</a><a>Uni</a>
         </Box>
