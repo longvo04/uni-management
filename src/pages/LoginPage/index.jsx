@@ -15,7 +15,6 @@ const LoginPage = ({ role }) => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
     const { status, currentUser, response, error, currentRole } = useSelector(state => state.user);;
 
     const [toggle, setToggle] = useState(false)
@@ -31,8 +30,10 @@ const LoginPage = ({ role }) => {
         const password = event.target.password.value;
         const email = event.target.email.value;
         const fields = { email, password }
+
+        // login user
+        role = 'Student'
         dispatch(loginUser(fields, role))
-        console.log(status, currentUser, role, password, email)
     };
 
     const handleInputChange = (event) => {
@@ -48,7 +49,7 @@ const LoginPage = ({ role }) => {
             }
             else if (currentRole === 'Student') {
                 navigate('/student');
-            } else {
+            } else if (currentRole === 'Lecturer') {
                 navigate('/lecturer');
             }
         }

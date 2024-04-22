@@ -17,17 +17,17 @@ export const loginUser = (fields, role) => async (dispatch) => {
     // test
     if (role == "Admin") dispatch(authSuccess("Admin"))
     else if (role == "Student") dispatch(authSuccess("Student"))
-    else dispatch(authSuccess("Lecturer"))
+    else if (role == "Lecturer") dispatch(authSuccess("Lecturer"))
     // end test
 
     // dispatch(authRequest());
     // role = Student || Lecturer || Admin
     // handle login user
-    try {
+    // try {
 
-    } catch (error) {
-        dispatch(authError(error));
-    }
+    // } catch (error) {
+    //     dispatch(authError(error));
+    // }
 };
 
 // Handle Register

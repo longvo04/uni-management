@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+console.log((JSON.parse(localStorage.getItem('user')) || {}).role || null)
+
 const initialState = {
     status: 'idle',
     userDetails: [],
@@ -31,9 +33,11 @@ const userSlice = createSlice({
         },
         authSuccess: (state, action) => {
             state.status = 'success';
-            console.log(action.payload)
+            console.log('payload', action.payload)
             //test
+            state.currentUser = action.payload;
             state.currentRole = action.payload;
+            localStorage.setItem('user', JSON.stringify({role: state.currentRole}))
             //end test
 
             // uncomment this

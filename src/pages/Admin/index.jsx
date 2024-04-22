@@ -16,11 +16,11 @@ const Admin = () => {
         paddingX: '20px'
       }}> */}
       <Routes>
-        <Route path="/" >
-          <Route path="/lecturer" element={<Lecturer />} />
-          <Route path="/student" element={<Student />} />
-          <Route path="/courses" element={<Courses />} />
-        </Route>
+          <Route path="/" element={<Student />} />
+          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/admin/lecturer" element={<Lecturer />} />
+          <Route path="/admin/student" element={<Student />} />
+          <Route path="/admin/courses" element={<Courses />} />
       </Routes>
       {/* </Box> */}
     </div>

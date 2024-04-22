@@ -13,13 +13,13 @@ const Student = () => {
     <Box>
       <StudentBar />
       <Routes>
-        <Route path="/" >
-          <Route path="/home" element={<StudentHomePage />} />
-          <Route path="/dashboard" element={<StudentDashBoard />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/course-register" element={<CourseRegister />} />
-          <Route path="/StudentInfor" element={<StudentInfor />} />
-        </Route>
+        <Route path="/" element={<StudentHomePage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/student/home" element={<StudentHomePage />} />
+        <Route path="/student/dashboard" element={<StudentDashBoard />} />
+        <Route path="/student/courses" element={<Courses />} />
+        <Route path="/student/course-register" element={<CourseRegister />} />
+        <Route path="/student/infor" element={<StudentInfor />} />
       </Routes>
       <UserFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
