@@ -15,13 +15,13 @@ const Lecturer = () => {
 
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '430px' }}>
         <Routes>
-          <Route path="/" >
-            <Route path="/home" element={<LecturerHomePage />} />
-            <Route path="/dashboard" element={<LecturerDashBoard />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/course-register" element={<CourseRegister />} />
-            <Route path="/infor" element={<LecturerInfor />} />
-          </Route>
+            <Route path="/" element={<LecturerHomePage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/lecturer/home" element={<LecturerHomePage />} />
+            <Route path="/lecturer/dashboard" element={<LecturerDashBoard />} />
+            <Route path="/lecturer/courses" element={<Courses />} />
+            <Route path="/lecturer/course-register" element={<CourseRegister />} />
+            <Route path="/lecturer/infor" element={<LecturerInfor />} />
         </Routes>
       </Box>
 

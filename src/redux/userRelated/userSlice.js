@@ -5,8 +5,8 @@ const initialState = {
     userDetails: [],
     tempDetails: [],
     loading: false,
-    currentUser: JSON.parse(localStorage.getItem('user')) || null,
-    currentRole: (JSON.parse(localStorage.getItem('user')) || {}).role || null,
+    currentUser: JSON.parse(localStorage.getItem('user')) || null, // Get cookie instead
+    currentRole: (JSON.parse(localStorage.getItem('user')) || {}).role || null, // Get cookie instead
     error: null,
     response: null,
     darkMode: true
@@ -31,10 +31,20 @@ const userSlice = createSlice({
         },
         authSuccess: (state, action) => {
             state.status = 'success';
+            console.log('payload', action.payload)
+            //test
             state.currentUser = action.payload;
+            state.currentRole = action.payload;
+            localStorage.setItem('user', JSON.stringify({role: state.currentRole}))
+
+            // todo
+            // Lưu cookie
+            //end test
+
+            // uncomment this
+            // state.currentUser = action.payload;
             // state.currentRole = action.payload.role;
-            state.currentRole = "Student" // for testing
-            localStorage.setItem('user', JSON.stringify(action.payload));
+            // localStorage.setItem('user', JSON.stringify(action.payload));
             state.response = null;
             state.error = null;
         },
