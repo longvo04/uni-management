@@ -21,22 +21,22 @@ function Auth() {
       border: '1px solid #ccc',
       borderRadius: 4,
       boxShadow: '0 0 5px rgba(0,0,0,0.1)'
-    
+
     }}>
       <Typography variant="h4" component="h4">
         Đăng nhập
       </Typography>
       <Container>
-      <Stack direction="row" spacing={2} justifyContent="center">
-        <FormControl>
-          <InputLabel htmlFor="email">Email address</InputLabel>
-          <Input id="email" aria-describedby="email-text" />
-        </FormControl>
-        <FormControl>
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <Input id="password" aria-describedby="password-text" />
-        </FormControl>
-      </Stack>
+        <Stack direction="row" spacing={2} justifyContent="center">
+          <FormControl>
+            <InputLabel htmlFor="email">Email address</InputLabel>
+            <Input id="email" aria-describedby="email-text" />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <Input id="password" aria-describedby="password-text" />
+          </FormControl>
+        </Stack>
       </Container>
 
       <Stack direction="row" spacing={2}>

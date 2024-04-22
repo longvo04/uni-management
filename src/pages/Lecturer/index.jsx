@@ -13,7 +13,7 @@ const Lecturer = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', }}>
       <LecturerBar />
 
-      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '400px' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '430px' }}>
         <Routes>
           <Route path="/" >
             <Route path="/home" element={<LecturerHomePage />} />
