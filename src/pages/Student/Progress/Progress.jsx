@@ -12,7 +12,7 @@ import Chart from './Chart';
 
 const defaultTheme = createTheme();
 
-const Dashboard = () => {
+const Progress = () => {
    
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -77,4 +77,4 @@ const Dashboard = () => {
     </ThemeProvider>
   );
 }
-export default Dashboard;
+export default Progress;

@@ -3,6 +3,10 @@
     width: 30px; 
     height: 30px;
 }
+.recent-work-img {
+  width: 300px !important;
+  height: 250px !important;
+}
 body {
   display: flex;
   flex-direction: column;

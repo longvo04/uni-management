@@ -1,16 +1,57 @@
-import Box from '@mui/material/Box';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import img1 from '../../../assets/img/recent-work-01.jpg';
-import img2 from '../../../assets/img/recent-work-02.jpg';
-import img3 from '../../../assets/img/recent-work-03.jpg';
-import img4 from '../../../assets/img/recent-work-04.jpg';
-import img5 from '../../../assets/img/recent-work-05.jpg';
-import img6 from '../../../assets/img/recent-work-06.jpg';
+import '../../assets/css/bootstrap.min.css';
+import '../../assets/css/bootstrap.css';
+import '../../assets/css/boxicon.min.css';
+import '../../assets/css/custom.css';
+import '../../assets/css/templatemo.css';
+import '../../assets/css/style.css';
+import '../../assets/js/bootstrap.bundle.min.js';
+import '../../assets/js/custom.js';
+import '../../assets/js/fslightbox.js';
+// import '../../assets/js/fullcalendar.js';
+import '../../assets/js/isotope.pkgd.js';
+import '../../assets/js/jquery-1.10.2.js';
+import '../../assets/js/jquery-ui.custom.min.js';
+import '../../assets/js/jquery.min.js';
+import '../../assets/js/templatemo.js';
+import '../../assets/js/templatemo.min.js';
+import img1 from '../../assets/img/recent-work-01.jpg';
+import img2 from '../../assets/img/recent-work-02.jpg';
+import img3 from '../../assets/img/recent-work-03.jpg';
+import img4 from '../../assets/img/recent-work-04.jpg';
+import img5 from '../../assets/img/recent-work-05.jpg';
+import img6 from '../../assets/img/recent-work-06.jpg';
+import logo from '../../assets/img/logo.jpg'
+import { Button } from '@mui/material';
 
-const LecturerHomePage = () => {
+
+const HomePage = () => {
   return (
     <div>
+      <nav id="main_nav" className="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div className="container d-flex justify-content-between align-items-center">
+          <a className="navbar-brand h1" href="/">
+            <img src={logo} className="icon-head" />
+            <span className="text-dark h4">DEF</span> <span className="text-primary h4">Uni</span>
+          </a>
+          <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+            id="navbar-toggler-success">
+            <div className="flex-fill mx-xl-5 mb-2">
+              <ul className="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                <li className="nav-item">
+                  <a className="nav-link btn-outline-primary rounded-pill px-3" href="/">Trang chủ</a>
+                </li>
+                
+              </ul>
+            </div>
+            <Button variant='outlined' href='/choose'>Đăng nhập</Button>
+          </div>
+        </div>
+      </nav>
       <div className="banner-wrapper bg-light">
         <div id="index_banner" className="banner-vertical-center-index container-fluid pt-5">
           <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
@@ -24,60 +65,78 @@ const LecturerHomePage = () => {
 
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
-                    <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300">
+                    <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
                       Hướng dẫn sử dụng
                     </h1>
-                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View more</a>
+                    <p className="banner-body text-muted py-3 mx-0 px-0">
+
+                    </p>
+                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View
+                      more</a>
                   </div>
                 </div>
 
               </div>
               <div className="carousel-item">
+
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
                     <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
                       Thông tin hoạt động sinh viên
                     </h1>
-                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View more</a>
+                    <p className="banner-body text-muted py-3">
+
+                    </p>
+                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View
+                      more</a>
                   </div>
                 </div>
-              </div>
 
+              </div>
               <div className="carousel-item">
+
                 <div className="py-5 row d-flex align-items-center">
                   <div className="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
                     <h1 className="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
                       Thông tin học vụ
                     </h1>
-                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View more</a>
+                    <p className="banner-body text-muted py-3">
+
+                    </p>
+                    <a className="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">View
+                      more</a>
                   </div>
                 </div>
+
               </div>
             </div>
             <a className="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button"
               data-bs-slide="prev">
               <i className='bx bx-chevron-left'></i>
-              <ArrowBackIosNewIcon sx={{ fontSize: 100 }} />
+              <span className="visually-hidden">Previous</span>
             </a>
             <a className="carousel-control-next text-decoration-none" href="#carouselExampleIndicators" role="button"
               data-bs-slide="next">
-              <i className='bx bx-chevron-right'><ArrowForwardIosIcon /></i>
-              <ArrowForwardIosIcon sx={{ fontSize: 100 }} />
+              <i className='bx bx-chevron-right'></i>
+              <span className="visually-hidden">Next</span>
             </a>
           </div>
+
+
         </div>
       </div>
+
 
       <section className="py-5 mb-5">
         <div className="container">
           <div className="recent-work-header row text-center pb-5">
             <h2 className="col-md-6 m-auto h2 semi-bold-600 py-5">Thông báo chung</h2>
           </div>
-
           <div className="row gy-5 g-lg-5 mb-4">
+
             <div className="col-md-4 mb-3">
               <a href="#" className="recent-work card border-0 shadow-lg overflow-hidden">
-                <img className="recent-work-img card-img" src={img1} alt="Card image" />
+              <img className="recent-work-img card-img" src={img1} alt="Card image"/>
                 <div className="recent-work-vertical card-img-overlay d-flex align-items-end">
                   <div className="recent-work-content text-start mb-3 ml-3 text-dark">
                     <h3 className="card-title light-300">Lịch ĐKMH HK233</h3>
@@ -146,6 +205,7 @@ const LecturerHomePage = () => {
                 </div>
               </a>
             </div>
+
           </div>
         </div>
       </section>
@@ -153,4 +213,4 @@ const LecturerHomePage = () => {
   );
 }
 
-export default LecturerHomePage;
+export default HomePage;

@@ -42,7 +42,7 @@ const data1 = [
         time: ['7', '8'],
         week: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
         isRegistered: false
-      },
+      }
     ]
   }
 ];
@@ -170,7 +170,6 @@ const CourseRegister = () => {
     if (subject.isRegistered) {
       // Hủy môn học
       setRegisteredSubjects(registeredSubjects.filter(s => s.id !== subject.id));
-      subject.isRegistered = false;
     } else {
       // Kiểm tra trùng lịch dạy
       const isConflict = registeredSubjects.some(
@@ -185,8 +184,8 @@ const CourseRegister = () => {
       }
 
       setRegisteredSubjects([...registeredSubjects, subject]);
-      subject.isRegistered = true;
     }
+    subject.isRegistered = !subject.isRegistered;
   };
 
   const handleBackClick = () => {
@@ -209,6 +208,7 @@ const CourseRegister = () => {
             <Table2 data={selectedData} onRegisterClick={handleRegisterClick} />
             <Button variant="contained" color="primary" onClick={handleBackClick}>Trở về</Button>
             <Table3 registeredSubjects={registeredSubjects} onCancelClick={handleCancelClick} />
+            <Button variant="contained" color="primary" onClick={handleBackClick}>Trở về</Button>
           </>
         )}
       </Box>
