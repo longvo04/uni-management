@@ -11,7 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-
+import { db } from '../../../../firebase/client';
+import { collection, addDoc, doc } from "firebase/firestore"; 
 
 //  id, name, lecturerId, major, dob, gender, address, degree, email, password
 const AddLecturer = () => {
@@ -39,10 +40,11 @@ const AddLecturer = () => {
   };
 
   const handleChangeDob = (date) => {
-    const day = `${date.$D}`
-    const month = `${date.$M+1}`
+    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
+    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
     const year = `${date.$y}`
-    const dob = `${day}/${month}/${year}`
+    const dob = `${day}-${month}-${year}`
+
     setDob(dob)
     console.log(dob)
   }
@@ -68,16 +70,25 @@ const AddLecturer = () => {
   }
 
 
-  const handleSubmit = () => {
-    const student = {
-      fullName: fullName,
-      studentId: studentId,
-      dob: dob,
-      group: group,
-      major
+  const handleSubmit = async () => {
+    const teacher = {
+      fullName,
+      lecturerId,
+      major,
+      dob,
+      gender,
+      address,
+      degree,
+      email,
+      password,
+      role: 'teacher',
     }
     // Handle submit
-    console.log(student)
+    const docRef = await addDoc(collection(db, "users"), {
+      ...teacher
+    });
+    if(!docRef.id) alert('Thêm giảng viên thất bại')
+    else alert('Thêm giảng viên thành công')
   }
 
   return (
@@ -173,7 +184,7 @@ const AddLecturer = () => {
           onChange={handleChangePassword}
         />
       </Box>
-      <Button sx={{marginTop: 2, position: 'relative', left: 200}} variant="contained" onClick={handleSubmit}>Thêm sinh viên</Button>
+      <Button sx={{marginTop: 2, position: 'relative', left: 200}} variant="contained" onClick={handleSubmit}>Thêm giảng viên</Button>
     </div>
   )
 }

@@ -4,8 +4,9 @@ import Modal from '../../../components/Modal';
 import AddStudent from './AddStudent';
 import EditStudent from './EditStudent';
 import Box from '@mui/material/Box';
-import { auth, db, collection, doc, setDoc, getDocFromServer } from "../../../firebase/client.js";
-
+import { db } from "../../../firebase/client.js";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 function createData(id, name, mssv, group, major, dob, gender, email, password) {
   return [
     id,
@@ -87,21 +88,27 @@ const renderCols = headCells.length
 
 const Student = () => {
   const [ rows, setRows ] = React.useState([])
+  const [ loading, setLoading ] = React.useState(true)
   const uid = JSON.parse(localStorage.getItem('uid'))
 
   // id, name, mssv, group, major, dob, gender, email, password
-  const modifyData = (data) => {
-    const temp = [data.id, data.name, data.mssv, data.group, data.major, data.dob, data.gender, data.email, data.password]
-    setRows([...rows, temp])
-  }
 
   const fetchData = async () => {
-    const usersCollection = collection(db, "users");
-    const usersSnapshot = await getDocFromServer(usersCollection);
-    usersSnapshot.forEach((doc) => {
-      modifyData(doc.data())
+    const q = query(collection(db, "users"), where("role", "==", 'student'));
+    const temp = []
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      temp.push(createData(doc.id, doc.data().name, doc.data().mssv, doc.data().group, doc.data().major, doc.data().dob, doc.data().gender, doc.data().email, doc.data().password))
     });
+    temp && (setLoading(false) || setRows(temp))
   }
+
+  const handleDelete = async (idList) => {
+      console.log(idList)
+      idList.forEach(async (id) => {
+        await deleteDoc(doc(db, "users", id));
+      })
+    }
 
 
   React.useEffect(() => {
@@ -112,7 +119,7 @@ const Student = () => {
   return (
     <Box sx={{ marginTop: 3 }}>
       <Modal ModalContent={AddStudent} buttonDescription={'Thêm sinh viên'} modalTitle={'Nhập thông tin sinh viên'}/>
-      <CustomizedTable ModalContent={EditStudent} headCells={headCells} renderCols={renderCols} rows={rows} modalTitle={'Sửa thông tin sinh viên'}/>
+      {loading ? <>Loading...</> : <CustomizedTable fetchData={fetchData} handleDelete={handleDelete} ModalContent={EditStudent} headCells={headCells} renderCols={renderCols} rows={rows} modalTitle={'Sửa thông tin sinh viên'}/>}
     </Box>
   );
 }

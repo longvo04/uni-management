@@ -38,7 +38,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent }) => {
+const CustomizedTable = ({ fetchData, headCells, rows, renderCols, modalTitle, ModalContent, handleDelete }) => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState(headCells[0].id || 'name');
   const [selected, setSelected] = React.useState([]);
@@ -50,7 +50,7 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
     acc[headCell.id] = index+1;
     return acc;
   }, {});
-
+  
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -68,9 +68,9 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
 
   const handleClick = (event, id, index) => {
     // POP up modal for edit
-    console.log(visibleRows[index])
+    console.log('log', visibleRows[index])
     if (event.target.type !== 'checkbox') {
-      setData(rows[id-1])
+      setData(visibleRows[index])
       setOpenModal(true);
       return
     }
@@ -92,10 +92,6 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
     setSelected(newSelected);
   };
 
-  const handleDelete = () =>{
-    console.log(selected)
-  }
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -104,10 +100,6 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  const handleSearch = (value) => {
-    
-  }
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
@@ -148,7 +140,7 @@ const CustomizedTable = ({ headCells, rows, renderCols, modalTitle, ModalContent
         </Fade>
       </Modal>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar handleDelete={handleDelete} numSelected={selected.length} />
+        <EnhancedTableToolbar handleDelete={() => handleDelete(selected)} numSelected={selected.length} />
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table
             stickyHeader aria-label="sticky table"

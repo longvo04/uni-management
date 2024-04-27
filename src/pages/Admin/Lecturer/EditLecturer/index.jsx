@@ -11,7 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-
+import { db } from '../../../../firebase/client';
+import { doc, updateDoc } from "firebase/firestore"; 
 
 
 //id, name, lecturerId, major, dob, gender, address, degree, email, password
@@ -41,12 +42,12 @@ const EditLecturer = ({ data }) => {
   };
 
   const handleChangeDob = (date) => {
-    const day = `${date.$D}`
-    const month = `${date.$M+1}`
+    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
+    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
     const year = `${date.$y}`
-    const dob = `${day}/${month}/${year}`
+    const dob = `${day}-${month}-${year}`
+
     setDob(dob)
-    console.log(dob)
   }
 
   const handleChangeGender = (event) => {
@@ -71,9 +72,8 @@ const EditLecturer = ({ data }) => {
 
 //id, name, lecturerId, major, dob, gender, address, degree, email, password
 
-  const handleSubmit = () => {
-    const student = {
-      id: data[0],
+  const handleSubmit = async () => {
+    const teacher = {
       fullName,
       lecturerId,
       major,
@@ -82,10 +82,14 @@ const EditLecturer = ({ data }) => {
       address,
       degree,
       email,
-      password
+      password,
     }
     // Handle submit
-    console.log(student)
+    const userRef =  doc(db, 'users', data[0]);
+    const docRef = await updateDoc(doc(db, "users", data[0]), {
+      ...teacher
+    });
+    alert('Cập nhật thông tin thành công')
   }
 
   return (
