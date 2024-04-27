@@ -21,6 +21,7 @@ const Student = () => {
         <Route path="/student/courses" element={<Courses />} />
         <Route path="/student/course-register" element={<CourseRegister />} />
         <Route path="/student/infor" element={<StudentInfor />} />
+        <Route path="/student/progress" element={<Progress />} />
       </Routes>
       <UserFooter />
       <script src="assets/js/bootstrap.bundle.min.js"></script>
