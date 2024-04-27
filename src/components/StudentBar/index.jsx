@@ -31,9 +31,6 @@ const StudentBar = () => {
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/home">Trang chủ</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/dashboard">Bảng điều khiển</a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link btn-outline-primary rounded-pill px-3" href="/student/course-register">Đăng ký môn học</a>
               </li>
               <li className="nav-item">
@@ -51,6 +48,7 @@ const StudentBar = () => {
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><a className="dropdown-item" href="/student/infor">Thông tin cá nhân</a></li>
+              <li><a className="dropdown-item" href="/student/progress">Tiến trình học tập</a></li>
               <Divider />
               <li><a className="dropdown-item" href="#">Cài đặt</a></li>
               <li><a className="dropdown-item" href="#" onClick={handleSignOut}>Đăng xuất</a></li>

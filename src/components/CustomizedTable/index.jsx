@@ -70,7 +70,7 @@ const CustomizedTable = ({ fetchData, headCells, rows, renderCols, modalTitle, M
     // POP up modal for edit
     console.log('log', visibleRows[index])
     if (event.target.type !== 'checkbox') {
-      setData(rows[index])
+      setData(visibleRows[index])
       setOpenModal(true);
       return
     }
