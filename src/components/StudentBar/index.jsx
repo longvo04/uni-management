@@ -20,6 +20,12 @@ const StudentBar = () => {
   const open = Boolean(anchorEl)
   const handleClick = (event) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
+  const handleSignOut = () => {
+    localStorage.removeItem('uid');
+    localStorage.removeItem('user');
+    cookies.remove('session', { path: '/' });
+    window.location.href = '/login';
+  }
 
   return (
     <Box sx={{
@@ -86,7 +92,7 @@ const StudentBar = () => {
               <a className="dropdown-item" href="" >Cài đặt</a>
             </MenuItem>
             <MenuItem>
-              <a className="dropdown-item" href="" >Đăng xuất</a>
+              <a onClick={handleSignOut} className="dropdown-item" href="" >Đăng xuất</a>
             </MenuItem>
           </Menu>
         </Box>

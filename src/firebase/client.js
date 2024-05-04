@@ -9,4 +9,4 @@ import { getAuth } from "firebase/auth";
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-export { addDoc, collection, doc, setDoc, getDocFromServer, db, app, auth };
+export { db, app, auth };
