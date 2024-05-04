@@ -1,4 +1,5 @@
-import { auth, db, collection, doc, setDoc, getDocFromServer } from "../../firebase/client.js";
+import { auth, db } from "../../firebase/client.js";
+import { doc, getDocFromServer } from "firebase/firestore"; 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
@@ -25,9 +26,9 @@ export const loginUser = (fields, role) => async (dispatch) => {
     // else if (role == "Lecturer") dispatch(authSuccess("Lecturer"))
     // end test
     const { email, password } = fields;
-    if (email == 'teacher@gmail.com' && password == '123456') dispatch(authSuccess("teacher"))
-    else if (email == 'student@gmail.com' && password == '123456') dispatch(authSuccess("student"))
-    else
+    // if (email == 'teacher@gmail.com' && password == '123456') dispatch(authSuccess("teacher"))
+    // else if (email == 'student@gmail.com' && password == '123456') dispatch(authSuccess("student"))
+    // else
     try {
 		const { user } = await signInWithEmailAndPassword(auth, email, password);
         console.log(user.uid)
@@ -60,7 +61,7 @@ export const loginUser = (fields, role) => async (dispatch) => {
 		}
         
 	} catch (error) {
-		return res.status(400).send("Invalid email or password");
+		return error.status(400).send("Invalid email or password");
         // dispatch(authError(error));
 	}
     
