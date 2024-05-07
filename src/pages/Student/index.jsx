@@ -14,10 +14,15 @@ import { doc, getDoc } from "firebase/firestore";
 
 const Student = () => {
   const uid = JSON.parse(localStorage.getItem('uid'))
-
+  const [ data, setData ] = useState({})
   const fetchData = async () => {
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      console.log('No such document!');
+      return
+    }
+    localStorage.setItem('data', JSON.stringify(docSnap.data()))
     console.log(docSnap.data())
   }
 
