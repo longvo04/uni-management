@@ -98,7 +98,7 @@ const Lecturer = () => {
     const temp = []
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      temp.push(createData(doc.id, doc.data().fullName, doc.data().lecturerId, doc.data().major, doc.data().dob, doc.data().gender, doc.data().address, doc.data().degree, doc.data().email, doc.data().password))
+      temp.push(createData(doc.id, doc.data().name, doc.data().lecturerId, doc.data().major, doc.data().dob, doc.data().gender, doc.data().address, doc.data().degree, doc.data().email, doc.data().password))
     });
     temp && (setLoading(false) || setRows(temp))
   }
@@ -106,7 +106,14 @@ const Lecturer = () => {
   const handleDelete = async (idList) => {
       console.log(idList)
       idList.forEach(async (id) => {
-        await deleteDoc(doc(db, "users", id));
+        fetch(`http://localhost:3000/api/user/delete/`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({uid: id})
+        });
       })
     }
 

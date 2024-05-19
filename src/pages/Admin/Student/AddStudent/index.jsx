@@ -11,7 +11,8 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import { db } from '../../../../firebase/client';
-import { collection, addDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore";
+import { auth, createUserWithEmailAndPassword } from '../../../../firebase/client';
 
 const AddStudent = () => {
   //id, name, mssv, group, major, dob, gender, email, password
@@ -42,12 +43,8 @@ const AddStudent = () => {
   }
   
   const handleChangeDob = (date) => {
-    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
-    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
-    const year = `${date.$y}`
-    const dob = `${day}-${month}-${year}`
-
-    setDob(dob)
+    console.log(date.format('DD-MM-YYYY'))
+    setDob(date.format('DD-MM-YYYY'))
   }
 
   const handleChangeGender = (event) => {
@@ -78,11 +75,23 @@ const AddStudent = () => {
       role: 'student',
     }
     // Handle submit
-    const docRef = await addDoc(collection(db, "users"), {
-      ...student
+    fetch('http://localhost:3000/api/user/create', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(student),
+    })
+    .then(response => response.json())
+    .then(async data => {
+      const uid = data.uid;
+      await setDoc(doc(db, "users", uid), {...student});
+      alert('Thêm sinh viên thành công')
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
-    if (!docRef.id) alert('Thêm sinh viên thất bại')
-    else alert('Thêm sinh viên thành công')
   }
 
   return (

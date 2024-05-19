@@ -1,10 +1,6 @@
 import { auth, db } from "../../firebase/client.js";
 import { doc, getDocFromServer } from "firebase/firestore"; 
 import { signInWithEmailAndPassword } from "firebase/auth";
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
-
-
 import {
     authRequest,
     stuffAdded,
@@ -19,7 +15,7 @@ import {
     getError,
 } from './userSlice';
 
-export const loginUser = (fields, role) => async (dispatch) => {
+export const loginUser = (fields) => async (dispatch) => {
     // // test
     // if (role == "Admin") dispatch(authSuccess("Admin"))
     // else if (role == "Student") dispatch(authSuccess("Student"))

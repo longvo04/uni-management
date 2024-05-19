@@ -11,13 +11,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
-import { db } from '../../../../firebase/client';
-import { collection, addDoc, doc } from "firebase/firestore"; 
+import { db, auth, createUserWithEmailAndPassword } from '../../../../firebase/client';
+import { setDoc, doc } from "firebase/firestore"; 
 
 //  id, name, lecturerId, major, dob, gender, address, degree, email, password
 const AddLecturer = () => {
   
-  const [fullName, setFullName] = React.useState('');
+  const [name, setName] = React.useState('');
   const [lecturerId, setLecturerId] = React.useState('');
   const [major, setMajor] = React.useState('Khoa học và kỹ thuật máy tính');
   const [dob, setDob] = React.useState('');
@@ -27,8 +27,8 @@ const AddLecturer = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const handleChangeFullName = (event) => {
-    setFullName(event.target.value);
+  const handleChangeName = (event) => {
+    setName(event.target.value);
   }
 
   const handleChangeLecturerId = (event) => {
@@ -40,13 +40,8 @@ const AddLecturer = () => {
   };
 
   const handleChangeDob = (date) => {
-    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
-    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
-    const year = `${date.$y}`
-    const dob = `${day}-${month}-${year}`
-
-    setDob(dob)
-    console.log(dob)
+    console.log(date)
+    setDob(date.format('DD-MM-YYYY'))
   }
 
   const handleChangeGender = (event) => {
@@ -72,7 +67,7 @@ const AddLecturer = () => {
 
   const handleSubmit = async () => {
     const teacher = {
-      fullName,
+      name,
       lecturerId,
       major,
       dob,
@@ -84,11 +79,23 @@ const AddLecturer = () => {
       role: 'teacher',
     }
     // Handle submit
-    const docRef = await addDoc(collection(db, "users"), {
-      ...teacher
+    fetch('http://localhost:3000/api/user/create', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(teacher),
+    })
+    .then(response => response.json())
+    .then(async data => {
+      const uid = data.uid;
+      await setDoc(doc(db, "users", uid), {...teacher});
+      alert('Thêm giảng viên thành công')
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
-    if(!docRef.id) alert('Thêm giảng viên thất bại')
-    else alert('Thêm giảng viên thành công')
   }
 
   return (
@@ -110,7 +117,7 @@ const AddLecturer = () => {
           required
           id="name"
           label="Họ & tên"
-          onChange={handleChangeFullName}
+          onChange={handleChangeName}
         />
         <TextField
           required

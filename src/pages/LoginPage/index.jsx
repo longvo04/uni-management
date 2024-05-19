@@ -7,8 +7,9 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import bgpic from "../../assets/img/unicampus.jpg"
 import styled from 'styled-components';
 import { loginUser } from '../../redux/userRelated/userHandle';
-import Popup from '../../components/Popup';
+import Cookies from 'universal-cookie'
 const defaultTheme = createTheme();
+import Popup from '../../components/Popup';
 
 const LoginPage = ({ role }) => {
 
@@ -31,8 +32,7 @@ const LoginPage = ({ role }) => {
         const fields = { email, password }
 
         // login user
-        role = 'Admin'
-        dispatch(loginUser(fields, role))
+        dispatch(loginUser(fields))
     };
 
     const handleInputChange = (event) => {

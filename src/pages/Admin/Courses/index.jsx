@@ -20,6 +20,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
 import Box from '@mui/material/Box';
+import AddClass from './AddClass';
 import { db } from "../../../firebase/client.js";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { doc, deleteDoc } from "firebase/firestore";
@@ -35,8 +36,10 @@ function createData(id, courseId, courseName, courseCredit, major, classList) {
   };
 }
 
-function createClassData(classId, className, classRoom, lecturer) {
+function createClassData(id, courseId, classId, className, classRoom, lecturer) {
   return {
+    id,
+    courseId,
     classId,
     className,
     classRoom,
@@ -61,13 +64,17 @@ const style = {
 };
 
 function Row(props) {
-  const { rowId } = props.row.id;
-  const { row } = props;
-
+  const [openModal, setOpenModal] = React.useState(false);
+  const { row, classList } = props;
+  const courseId = row.id;
+  console.log('classList', classList)
+  console.log('row', row)
+  row.classList = classList.filter((classData) => classData.courseId === courseId)
   
   const [open, setOpen] = React.useState(false);
 
   const handleAddClass = (data) => {
+    setOpenModal(true)
     console.log('Thêm lớp', data)
   }
 
@@ -88,12 +95,38 @@ function Row(props) {
   const handleDeleteCourse = async (data) => {
     const answer = confirm('Bạn có chắc chắn muốn xóa môn học này không?')
     if (!answer) return
+
+    classList.forEach(async (classData) => {
+    if (classData.courseId === courseId) {
+      await deleteDoc(doc(db, "class", classData.id));
+    }})
     await deleteDoc(doc(db, "courses", data.id));
     alert('Xóa môn học thành công')
   }
 
   return (
     <React.Fragment>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openModal}
+        onClose={()=>setOpenModal(false)}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        
+        <Fade in={openModal}>
+          <Box sx={style}>
+            <h2>Nhập thông tin lớp học</h2>
+            <AddClass data={row}/>
+          </Box>
+        </Fade>
+      </Modal>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
           <IconButton
@@ -217,13 +250,14 @@ const headCells = [
 
 const Courses = () => {
   const [rows, setRows] = React.useState([]);
+  const [classList, setClassList] = React.useState([])
   const [openModal, setOpenModal] = React.useState(false);
   const [modalTitle, setModalTitle] = React.useState('Sửa thông tin khóa học');
   const [data, setData] = React.useState({});
   const [ModalContent, setModalContent] = React.useState(null);
   const [loading, setLoading] = React.useState(true)
   
-  const fetchData = async () => {
+  const fetchCourse = async () => {
     const querySnapshot = await getDocs(collection(db, "courses"));
     const temp = []
     const classList = []
@@ -234,8 +268,19 @@ const Courses = () => {
     temp && (setLoading(false) || setRows(temp))
   }
 
+  const fetchClass = async () => {
+    const querySnapshot = await getDocs(collection(db, "class"));
+    const temp = []
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      temp.push(createClassData(doc.id, doc.data().courseId, doc.data().classID, doc.data().className, doc.data().room, doc.data().lecturer))
+    });
+    temp && (setLoading(false) || setClassList(temp))
+  }
+
   React.useEffect(() => {
-    fetchData()
+    fetchCourse()
+    fetchClass()
   }
   , [])
 
@@ -276,7 +321,7 @@ const Courses = () => {
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <Row key={row.id} row={row} />
+                <Row key={row.id} row={row} classList={classList} />
               ))}
             </TableBody>
           </Table>

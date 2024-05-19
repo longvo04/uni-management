@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
-
+import Cookies from 'universal-cookie'
 import logo from '../../assets/img/logo.jpg';
 
 const buttonStyle = {
@@ -16,11 +16,13 @@ const buttonStyle = {
 };
 
 const StudentBar = () => {
+  const cookies = new Cookies(null, { path: '/' });
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
   const handleSignOut = () => {
+    console.log('sign out')
     localStorage.removeItem('uid');
     localStorage.removeItem('user');
     cookies.remove('session', { path: '/' });
@@ -92,7 +94,7 @@ const StudentBar = () => {
               <a className="dropdown-item" href="" >Cài đặt</a>
             </MenuItem>
             <MenuItem>
-              <a onClick={handleSignOut} className="dropdown-item" href="" >Đăng xuất</a>
+              <div onClick={handleSignOut} className="dropdown-item" href="" >Đăng xuất</div>
             </MenuItem>
           </Menu>
         </Box>

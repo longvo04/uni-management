@@ -10,10 +10,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Popover from '@mui/material/Popover';
 import React from 'react';
+import Cookies from 'universal-cookie'
 
 import logo from '../../assets/img/logo.jpg';
 
 const LecturerBar = () => {
+  const cookies = new Cookies(null, { path: '/' });
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorNotiEl, setAnchorNotiEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -28,6 +30,7 @@ const LecturerBar = () => {
   const handleSignOut = () => {
     localStorage.removeItem('uid');
     localStorage.removeItem('user');
+    cookies.remove('session', { path: '/' });
     window.location.href = '/login';
   }
 
@@ -132,7 +135,7 @@ const LecturerBar = () => {
               <a className="dropdown-item" href="" >Cài đặt</a>
             </MenuItem>
             <MenuItem>
-              <a className="dropdown-item" href="" onClick={handleSignOut} >Đăng xuất</a>
+              <div className="dropdown-item" href="" onClick={handleSignOut} >Đăng xuất</div>
             </MenuItem>
           </Menu>
         </Box>

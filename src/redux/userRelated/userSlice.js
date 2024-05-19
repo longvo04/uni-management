@@ -61,7 +61,8 @@ const userSlice = createSlice({
             state.currentUser = null;
             state.status = 'idle';
             state.error = null;
-            state.currentRole = null
+            state.currentRole = null;
+            
         },
 
         doneSuccess: (state, action) => {

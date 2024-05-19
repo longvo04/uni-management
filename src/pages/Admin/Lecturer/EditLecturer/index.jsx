@@ -19,7 +19,7 @@ import { doc, updateDoc } from "firebase/firestore";
 const EditLecturer = ({ data }) => {
   console.log(data)
 
-  const [fullName, setFullName] = React.useState(data[1]);
+  const [name, setName] = React.useState(data[1]);
   const [lecturerId, setLecturerId] = React.useState(data[2]);
   const [major, setMajor] = React.useState(data[3]);
   const [dob, setDob] = React.useState(data[4]);
@@ -29,8 +29,8 @@ const EditLecturer = ({ data }) => {
   const [email, setEmail] = React.useState(data[8]);
   const [password, setPassword] = React.useState(data[9]);
 
-  const handleChangeFullName = (event) => {
-    setFullName(event.target.value);
+  const handleChangeName = (event) => {
+    setName(event.target.value);
   }
   
   const handleChangeLecturerId = (event) => {
@@ -74,7 +74,7 @@ const EditLecturer = ({ data }) => {
 
   const handleSubmit = async () => {
     const teacher = {
-      fullName,
+      name,
       lecturerId,
       major,
       dob,
@@ -111,8 +111,8 @@ const EditLecturer = ({ data }) => {
           required
           id="name"
           label="Họ & tên"
-          value={fullName}
-          onChange={handleChangeFullName}
+          value={name}
+          onChange={handleChangeName}
         />
         <TextField
           required

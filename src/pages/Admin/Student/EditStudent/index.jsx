@@ -44,12 +44,7 @@ const EditStudent = ({ data }) => {
   }
 
   const handleChangeDob = (date) => {
-    const day = date.$D < 10 ? `0${date.$D}` : `${date.$D}`
-    const month = date.$M+1 < 10 ? `0${date.$M}` : `${date.$M+1}`
-    const year = `${date.$y}`
-    const dob = `${day}-${month}-${year}`
-
-    setDob(dob)
+    setDob(date.format('DD-MM-YYYY'))
   }
   
   const handleChangeGender = (event) => {

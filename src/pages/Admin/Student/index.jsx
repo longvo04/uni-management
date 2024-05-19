@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { db } from "../../../firebase/client.js";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { doc, deleteDoc } from "firebase/firestore";
+import { auth, createUserWithEmailAndPassword, deleteUser } from '../../../firebase/client';
 function createData(id, name, mssv, group, major, dob, gender, email, password) {
   return [
     id,
@@ -106,7 +107,14 @@ const Student = () => {
   const handleDelete = async (idList) => {
       console.log(idList)
       idList.forEach(async (id) => {
-        await deleteDoc(doc(db, "users", id));
+        fetch(`http://localhost:3000/api/user/delete/`, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({uid: id})
+        });
       })
     }
 
