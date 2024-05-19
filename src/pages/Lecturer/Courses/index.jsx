@@ -4,9 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import '../../../assets/css/style.css';
 import { db } from "../../../firebase/client.js";
-import { collection, query, where, getDocs, doc, getDocFromServer } from "firebase/firestore";
+import { collection, query, where, getDocs, count, doc, getDocFromServer } from "firebase/firestore";
 import { updateDoc, arrayUnion } from "firebase/firestore";
-import { getStorage, ref, uploadBytesResumable, listAll } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, listAll, deleteObject } from "firebase/storage";
 
 const Courses = () => {
   const [selectedClass, setSelectedClass] = useState(null);
@@ -29,7 +29,6 @@ const Courses = () => {
       const userDocSnap = await getDocFromServer(userDocRef);
 
       if (userDocSnap.exists()) {
-        // console.log(userDocSnap.data());
         setUser(userDocSnap.data());
 
         const majorRef = collection(db, "courses");
@@ -38,56 +37,57 @@ const Courses = () => {
         const tempClassList = [];
         const tempStudentList = [];
         const tempFileList = [];
+        const promises = []; // Mảng chứa các Promise
 
         querySnapshot.forEach(doc => {
-          // console.log(doc.data().classList);
           const classListData = doc.data().classList;
           if (Array.isArray(classListData)) {
             tempClassList.push(...classListData);
+            // Thêm Promise để lấy dữ liệu sinh viên từ mỗi lớp
+            promises.push(getClassData(doc.data().classList));
           } else {
             console.error("classList is not an array:", classListData);
           }
         });
 
+        // Sử dụng Promise.all để chờ cho tất cả các hoạt động hoàn thành
+        await Promise.all(promises);
+
         setClassList(tempClassList);
-        // console.log(classList);
 
-        tempClassList.forEach(async className => {
-          const classDocRef = doc(db, "class", className);
-          const classDocSnap = await getDocFromServer(classDocRef);
-          if (classDocSnap.exists()) {
-            // console.log(classDocSnap.data());
-            const classData = classDocSnap.data();
-            if (classData && classData.studentList && Array.isArray(classData.studentList)) {
-              // console.log(classData.studentList)
-              tempStudentList.push(classData.studentList);
-              // console.log(tempStudentList)
+        // Function để lấy dữ liệu sinh viên từ mỗi lớp
+        async function getClassData(classList) {
+          const studentPromises = classList.map(async className => {
+            const classDocRef = doc(db, "class", className);
+            const classDocSnap = await getDocFromServer(classDocRef);
+            if (classDocSnap.exists()) {
+              const classData = classDocSnap.data();
+              if (classData && classData.studentList && Array.isArray(classData.studentList)) {
+                tempStudentList.push(classData.studentList);
+              } else {
+                console.error("Invalid studentList data:", classData);
+              }
             } else {
-              console.error("Invalid studentList data:", classData);
+              console.log("No such class document for", className);
             }
-            // if (classData && classData.fileList && Array.isArray(classData.fileList)) {
-            //   // console.log(classData.fileList)
-            //   tempFileList.push(classData.fileList);
-            //   // console.log(tempFileList)
-            // } else {
-            //   console.error("Invalid fileList data:", classData);
-            // }
-          } else {
-            console.log("No such class document for", className);
-          }
-        });
+          });
+          await Promise.all(studentPromises);
+        }
 
-        tempClassList.forEach(async className => {
+        // Lấy danh sách file cho từng lớp
+        const filePromises = tempClassList.map(async className => {
           const classFolderRef = ref(storage, className);
           const files = await listAll(classFolderRef);
           const fileList = files.items.map(item => item.name);
-          tempFileList.push(fileList);
+          return fileList;
         });
 
+        // Sử dụng Promise.all để chờ cho tất cả các hoạt động lấy danh sách file hoàn thành
+        const fileResults = await Promise.all(filePromises);
+
         setStudentList(tempStudentList);
-        setFileList(tempFileList);
-        // console.log(studentList);
-        // console.log(fileList);
+        // Sau khi tất cả các danh sách file đã được lấy, cập nhật state fileList
+        setFileList(fileResults);
       } else {
         console.log("No such user document!");
       }
@@ -95,6 +95,30 @@ const Courses = () => {
 
     fetchData();
   }, []);
+
+  const handleDeleteFile = async (className, fileName) => {
+    try {
+      const storage = getStorage();
+      const fileRef = ref(storage, `${className}/${fileName}`);
+
+      // Xóa file từ Firebase Storage
+      await deleteObject(fileRef);
+
+      // Cập nhật danh sách file trên giao diện bằng cách loại bỏ file đã xóa
+      setFileList(prevFileList => {
+        const updatedFileList = [...prevFileList];
+        const classIndex = updatedFileList.findIndex(item => item === className);
+        if (classIndex !== -1) {
+          updatedFileList[classIndex] = updatedFileList[classIndex].filter(item => item !== fileName);
+        }
+        return updatedFileList;
+      });
+
+      console.log("File deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting file:", error);
+    }
+  };
 
   const filterClassData = (className, searchTerm) => {
     return className.filter(detail => detail && detail.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -171,7 +195,7 @@ const Courses = () => {
         console.error("Error uploading file:", error);
       }
     } else {
-      alert('Vui lòng chọn một lớp học và một file trước khi tải lên.');
+      alert('Vui lòng chọn một file trước khi tải lên.');
     }
   };
 
@@ -260,7 +284,14 @@ const Courses = () => {
                 <h4>Danh sách file đã tải</h4>
                 <ul id="courseList">
                   {fileList[countClass] && fileList[countClass].map((file, index) => (
-                    <li key={index}>{file}</li>
+                    <li key={index}>
+                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <Box sx={{ display: 'flex', width: '500px', justifyContent: 'flex-start' }}>
+                          <a href={`https://firebasestorage.googleapis.com/v0/b/def-uni-management.appspot.com/o/${selectedClass}%2F${encodeURIComponent(file)}?alt=media`} target="_blank">{file}</a>
+                        </Box>
+                        <Button variant="contained" color="secondary" onClick={() => handleDeleteFile(selectedClass, file)}>Xóa</Button>
+                      </Box>
+                    </li>
                   ))}
                 </ul>
               </Box>
